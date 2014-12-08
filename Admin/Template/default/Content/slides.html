@@ -1,0 +1,60 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+         <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui">I</i>幻灯片设置</div>
+        <div class="p-col">
+            <form action="<!--{:U('Content/up_slides')}-->" method="post">
+            <table class="table-list" border="1">
+                <tbody>
+                    <tr>
+                        <th width="15">Id</th>
+                        <th>幻灯片标题</th>
+                        <th width="200">链接地址</th>
+                        <th width="200">图片地址</th>
+                        <th width="80">发布时间</th>
+                        <th width="120">操作</th>
+                        <th width="50">排序</th>
+                    </tr>
+                    <volist name="slides" id="vo" mod="2">
+                    <tr <eq name="mod" value="1">class="spec"</eq>>
+                        <td><!--{$vo.id}--></td>
+                        <td title="<!--{$vo.title}-->"><!--{$vo.title}--></td>
+                        <td title="<!--{$vo.url|default="#"}-->"><!--{$vo.url|default="#"}--></td>
+                        <td title="<!--{$vo.pic|default="#"}-->"><!--{$vo.pic|default="#"}--></td>
+                        <td><!--{$vo.dateline|date="Y-m-d",###}--></td>
+                        <td>
+                            <a href="<!--{:U('Content/ed_slides',array(id=>$vo['id']))}-->" title="编辑"><i class="ui">S</i></a>
+                            <a href="<!--{:U('Index/prompt',array(id=>$vo['id'],t=>'sld'))}-->" title="删除"><i class="ui">V</i></a>
+                        </td>
+                        <td>
+                            <input type="text" name="<!--{$vo.id}-->" value="<!--{$vo.sort}-->"/>
+                        </td>
+                    </tr>
+                    </volist>
+                    <tr>
+                        <td colspan="4"><input type="button" value="添加新幻灯片" class="modal" data-modal="add_slides">  <input type="submit" value="更新排序"/></td>
+                        <td colspan="4"><div class="page"><!--{$page}--></div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+        </div
+    </div>
+</div>
+<div class="dialog" id="add_slides">
+     <div class="dialog-header">添加幻灯片<a href="javascript:void(0)" class="cls y" data-id="add_slides"></a></div>
+     <div class="p-col">
+        <form action="<!--{:U('Content/add_slides_exe')}-->" method="post" enctype="multipart/form-data">
+            <table class="form-table">
+                <tbody>
+                   <tr><td>标题</td><td><input type="text" name="title" class="c400w"></td></tr>
+                    <tr><td>链接</td><td><input type="text" name="url" class="c400w"></td></tr>
+                    <tr><td>图片</td><td><input type="file" name="pics"></td></tr>
+                    <tr><td>排序</td><td><input type="text" name="sort" class="c8w"></td></tr>
+                    <tr><td>&nbsp;</td><td><input type="submit" value="添加"></td></tr> 
+                </tbody>
+            </table>
+        </form>
+     </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

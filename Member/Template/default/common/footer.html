@@ -1,0 +1,51 @@
+<footer class="footer">
+	<div class="wp cl">
+		<div class="static hm xs2">
+			<a href="<!--{$G.siteurl}-->/about.html" class="first">关于微剑三</a>
+			<a href="<!--{$G.siteurl}-->/flow.html">免责申明</a>
+			<a href="<!--{$G.siteurl}-->/adv.html">广告服务</a>
+			<a href="<!--{$G.siteurl}-->/flink.html">友情链接</a>
+			<a href="<!--{$G.siteurl}-->/sitemap.html">网站导航</a>
+			<a href="<!--{$G.siteurl}-->/join.html">加入我们</a>
+		</div>
+		<div class="copy hm">	
+			<p>免责声明：本站所有内容均来自正规视频站点所提供的公开引用资源</p>
+			<p>&copy;COPYRIGHT 2014 <a href="<!--{$G.siteurl}-->">weij3.com</a> ALL RIGHTS RESERVED.<a href="http://www.miibeian.gov.cn/"><!--{$G.icp}--></a></p>
+		</div>
+	</div>
+</footer>
+<if condition="$ukey neq 0">
+<div class="dialog" id="login">
+	 <div class="dialog-header">登录之后更精彩<a href="javascript:void(0)" class="cls y" data-id="login"></a></div>
+	<div class="p-col">
+		<form id="data-login" method="post" action="/login">
+			<div class="form-box"><label>邮箱</label><input type="text" name="email" class="email text-box"></div>
+			<div class="form-box"><label>密码</label><input type="password" name="password" class="password text-box"></div>
+			<div class="form-box"><input type="submit" class="sub-btn" value="登录"><a href="<!--{$G.siteurl}-->/register.html" class="register-btn mlm">还没有账号？注册</a></div>
+		</form>
+	</div>
+</div>
+</if>
+<div class="floating-nav fixed">
+	<li class="backTop"><a href="javascript:void(0)"><i class="i-icon">a</i></a></li>
+	<li>
+		<if condition="$ukey neq 0">
+			<a href="<!--{$G.siteurl}-->/member/post"><i class="i-icon">S</i></a>
+		<else/>
+			<a href="javascript:void(0)" class="modal" data-modal="login"><i class="i-icon">S</i></a>
+		</if>
+	</li>
+	<li><a href="javascript:void(0)"><i class="i-icon">f</i></a></li>
+</div>
+<js file="__cmmjs__/jquery-1.11.1.min.js"/>
+<js file="__homejs__/weithree.min.js"/>
+<js file="__mjs__/L_slide.js"/>
+<script type="text/javascript">
+$(function(){
+	$(".user-info-banner").slide({
+		affect:4,
+		time:4000,
+		speed:400,
+	});
+})
+</script>

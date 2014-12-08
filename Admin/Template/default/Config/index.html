@@ -1,0 +1,27 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>站点配置</div>
+        <div class="p-col">
+            <form action="<!--{:U('Config/upsite')}-->" method="post">
+                <table class="form-table" width="100%">
+                    <tbody>
+                        <input type="hidden" name="id" value="<!--{$g.id}-->">
+                        <tr><td width="80" align="right">站点名称</td><td><input type="text" name="sitename" value="<!--{$g.sitename}-->" class="c320w"></td></tr>
+                        <tr><td align="right">站点url</td><td><input type="text" name="siteurl" value="<!--{$g.siteurl}-->" class="c320w"></td></tr>
+                        <tr><td align="right">短名称</td><td><input type="text" name="shortname" value="<!--{$g.shortname}-->" class="c180w"></td></tr>
+                        <tr><td align="right">QQ</td><td><input type="text" name="qq" value="<!--{$g.qq}-->" class="c180w"></td></tr>
+                        <tr><td align="right">邮箱</td><td><input type="text" name="email" value="<!--{$g.email}-->" class="c180w"></td></tr>
+                        <tr><td align="right">联系电话</td><td><input type="text" name="mobile" value="<!--{$g.mobile}-->" class="c180w"></td></tr>
+                        <tr><td align="right">icp备案</td><td><input type="text" name="icp" value="<!--{$g.icp}-->" class="c180w"></td></tr>
+                        <tr><td align="right">统计代码</td><td><textarea name="count" class="c500w c60h"><!--{$g.count}--></textarea></td></tr>
+                        <tr><td align="right">关键字</td><td><input type="text" name="keywords" value="<!--{$g.keywords}-->" class="c500w"></td></tr>
+                        <tr><td align="right">站点描述</td><td><input type="text" name="description" value="<!--{$g.description}-->" class="c500w"></td></tr>
+                        <tr><td>&nbsp;</td><td><input type="submit" value="确认"></td></tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

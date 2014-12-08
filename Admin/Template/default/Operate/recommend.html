@@ -1,0 +1,35 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+         <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>站长推荐</div>
+        <div class="p-col">
+            <table class="table-list" border="1">
+                <tbody>
+                    <tr>
+                        <th width="15">id</th>
+                        <th>推荐标题</th>
+                        <th width="120">发布时间</th>
+                        <th width="180">操作</th> 
+                    </tr>
+                    <volist name="list" id="vo">
+                    <tr>
+                        <td><!--{$vo.id}--></td>
+                        <td><!--{$vo.title}--></td>
+                        <td><!--{$vo.dateline|date="y-m-d H:i",###}--></td>
+                        <td>
+                            <a href="<!--{:U('Operate/ed_notice',array(id=>$vo['id']))}-->"><i class="ui">S</i></a>
+                             <span class="pi">-</span>
+                            <a href="<!--{:U('Operate/ed_notice',array(id=>$vo['id']))}-->"><i class="ui">V</i></a>
+                        </td>
+                    </tr>
+                    </volist>
+                    <tr>
+                        <td colspan="2"><input type="button" value="添加公告" class="modal"></td>
+                        <td colspan="2"><div class="page"><!--{$page}--></div></td>
+                    </tr>
+                </tbody>
+            </tbale>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

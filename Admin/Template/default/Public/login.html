@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理登陆-<!--{$g.shortname}-->-AdminCMS后台管理中心-powered by Admin!</title>
+    <css file="__cmmcss__/common.min.css"/>
+    <css file="__acpcss__/dantes.css"/>
+    <style>
+    input { background-image: none !important;}
+    </style>
+</head>
+<body style="background:url(__acpimg__/bg0.jpg) repeat top center;">
+<div class="login_box"> 
+        <div class="hm" style="margin-bottom: 20px;"><img src="__acpimg__/acp_login_logo.png" alt=""></div>
+        <ul class="login_form">
+            <form action="<!--{:U('Public/login_do')}-->" method="post">
+                <li><i class="user_login"></i><input type="text" name="username" id="username" placeholder="输入您的用户名"></li>
+                <li style="margin-bottom:20px;"><i class="user_pwd"></i><input type="password" name="password" id="password" placeholder="输入您的密码"></li>
+                <li><i class="user_verify"></i><input type="text" name="verify" id="verify" placeholder="不区分大小写"><span class="fx">点击图片刷新</span></li>
+                <li style="margin-bottom:10px;"><img src="<!--{:U('Public/verify')}-->" alt="" class="vm" id="verifyImg" onclick="fleshVerify()" width="274" height="45"></li>
+                <li><input type="submit" value="安全登录" id="btn"></li>
+            </form>
+        </ul>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>
+<script language="JavaScript">
+     function fleshVerify(){ 
+        //重载验证码
+        var time = new Date().getTime();
+            document.getElementById('verifyImg').src= '<!--{:U('Public/verify','','')}-->/'+time;
+     }
+ </script>

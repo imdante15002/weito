@@ -1,0 +1,52 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+         <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui">g</i>分类管理</div>
+        <div class="p-col">
+            <table class="table-list">
+                <tbody>
+                    <tr>
+                        <th>id</th>
+                        <th>名称</th>
+                        <th>操作</th>
+                        <th>排序</th>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="ui-td" id="category">
+                <foreach name="category" item="v">
+                    <h3 class="level1"><input type="checkbox" id="checksub" class="mrm"><!--{$v.name}-->
+                        <div class="y c360w">
+                            <a href="<!--{:U('Content/add_category',array(id=>$v['id']))}-->" title="添加子分类"id="add_category" data-id="<!--{$v.id}-->"><i class="ui i-add"></i></a>
+                            <a href="<!--{:U('Content/ed_category',array(id=>$v['id']))}-->" title="编辑"><i class="ui i-ed"></i></a>
+                            <a href="<!--{:U('Content/del_category',array(id=>$v['id']))}-->" title="删除"><i class="ui i-del"></i></a>
+                        </div>
+                    </h3>
+                    <dl  class="level2">
+                        <foreach name="v.child" item="w">
+                            <dt>
+                            <div class="y c360w">
+                                <a href="<!--{:U('Content/add_category',array(id=>$w['id']))}-->" title="添加子分类"id="add_category" data-id="<!--{$w.id}-->"><i class="ui i-add"></i></a>
+                                <a href="<!--{:U('Content/ed_category',array(id=>$w['id']))}-->" title="编辑"><i class="ui i-ed"></i></a>
+                                <a href="<!--{:U('Content/del_category',array(id=>$wa['id']))}-->" title="删除"><i class="ui i-del"></i></a>
+                            </div>
+                            <input type="checkbox" name="id[]" value="<!--{$w.id}-->" class="mrm">
+                            <!--{$w.name}--></dt>
+                            <ul class="level3">
+                                <foreach  name="w.child" item="c">
+                                    <li>
+                                     <div class="y c360w">
+                                        <a href="<!--{:U('Content/ed_category',array(id=>$w['id']))}-->" title="编辑"><i class="ui">S</i></a>
+                                        <a href="<!--{:U('Content/del_category',array(id=>$wa['id']))}-->" title="删除"><i class="ui">V</i></a>
+                                    </div>
+                                    <input type="checkbox" name="cid[]" value="<!--{$c.id}-->" class="mrm"><!--{$c.name}--></li>
+                                </foreach >
+                            </ul>
+                        </foreach>
+                    </dl>
+                </foreach>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

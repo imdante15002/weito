@@ -1,0 +1,28 @@
+
+<include file="Admin/Template/default/common/header.html"/>
+
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui">b</i>编辑幻灯片信息</div>
+        <div class="p-col">
+            <form action="<!--{:U('Content/ed_slides_exe')}-->" method="post" enctype="multipart/form-data">
+            <table class="form-table">
+                <tbody>
+                    <input type="hidden" name="id" value="<!--{$ed.id}-->">
+                    <input type="hidden" name="pic" value="/<!--{$ed.pic}-->">
+                    <tr><td>标题</td><td><input type="text" name="title" value="<!--{$ed.title}-->" class="c400w"></td></tr>
+                    <tr><td>链接</td><td><input type="text" name="url" value="<!--{$ed.url}-->" class="c400w"></td></tr>
+                    <tr><td>图片</td><td><input type="file" name="pics"></td></tr>
+                    <tr><td>排序</td><td><input type="text" name="sort" value="<!--{$ed.sort}-->"class="c8w"></td></tr>
+                    <tr><td>&nbsp;</td><td><input type="submit" value="保存修改"></td></tr>
+                    <tr>
+                        <td>截图预览</td>
+                        <td><img src="/<!--{$ed.pic}-->" width="800"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

@@ -1,0 +1,22 @@
+<if condition="$ukey eq 0 ">
+<div class="user-off-line">
+	<img src="__homeimg__/user.jpg" width="40" height="40" class="vm" >
+	<button value="登录" class="modal login-btn" data-modal="login"><i class="i-icon">B</i> 登录</button>
+	<a href="<!--{$G.siteurl}-->/register.html" class="register-btn">还没有账号？注册</a>
+</div>
+<else/>
+<div class="user-on-line">
+	<div class="user-avtimg"><a href="/member/infocenter"><img src="__cmmimg__/user.png" width="38" height="38" title="进入个人用户中心"></a></div>
+	<div class="user-username relative" id="user_show_menu">
+	<div class="user-username-lenth"><!--{$user.username}--><span class="caret"></span></div>
+	<a href="/member/post" class="user-a-btn"><i class="i-icon">D</i> 发布视频</a>
+	<ul class="user-menu">
+		<li><a href="/member/myinfo">个人信息</a></li>
+		<li><a href="/member/myinfo/revision">头像修改</a></li>
+		<li><a href="/member/myinfo/video">我的视频</a></li>
+		<li><a href="/member/myinfo/reply">我的回复</a></li>
+		<li><a href="/member/logout">安全退出</a></li>
+	</ul>
+	</div>
+</div>
+</if>

@@ -1,0 +1,102 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2">r</i>模块管理</div>
+        <div class="p-col">
+            <div class="col cl">
+                    <table class="table-list" border="1">
+                        <tbody>
+                            <tr>
+                                <td colspan="4"><input type="button" value="添加控制器" class="modal mrm" data-modal="add_model"></td>
+                            </tr>
+                            <tr>
+                                <th width="20">id</th>
+                                <th width="160">描述</th>
+                                <th>模型路径</th>
+                                <th width="100">操作</th>
+                            </tr>
+                            <volist name="list" id="vo">
+                            <tr>
+                                <td><!--{$vo.id}--></td>
+                                <td><span class="ccc"><!--{$vo.html}--></span><!--{$vo.title}--></td>
+                                <td><span class="ccc"><!--{$vo.html}--></span><!--{$vo.name}--></td>
+                                <td>
+                                    <a href="javascript:void(0);" title="添加方法" data-modal="addsub" data-pid="<!--{$vo.id}-->" class="modal"><i class="ui">U</i></a>
+                                    <a href="javascript:void(0);" title="编辑" data-edid="<!--{$vo.id}-->"><i class="ui">S</i></a>
+                                    <a href="javascript:void(0);" title="删除" data-delid="<!--{$vo.id}-->"><i class="ui">V</i></a>
+                                </td>
+                            </tr>
+                            </volist>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dialog" id="add_model">
+    <div class="dialog-header">添加控制器<a href="javascript:void(0)" class="cls y" data-id="add_model"></a></div>
+    <div class="p-col">
+        <form action="<!--{:U('Auth/add_model')}-->" method="post">
+            <table class="form-table">
+                <tbody>
+                    <tr><td>模型名称</td><td><input type="text" class="modal" name="name" class="c200w"></td></tr>
+                    <tr><td>描述</td><td><input type="text" name="title" class="c160w"></td></tr>
+                    <tr>
+                    <td>模块</td>
+                    <td>
+                        <volist name="pid" id="vo">
+                            <lable><input type="radio" name="pid" value="<!--{$vo.id}-->"><!--{$vo.title}--></lable>
+                        </volist>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" value="提交" class="add_btn"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </form>
+    </div>
+</div>
+<div class="dialog" id="addsub">
+    <div class="dialog-header">添加控制器<a href="javascript:void(0)" class="cls y" data-id="addsub"></a></div>
+    <div class="p-col">
+            <table class="form-table">
+                <tbody>
+                    <tr><td>模型名称</td><td><input type="text" name="name" class="add_name c200w"></td></tr>
+                    <tr><td>描述</td><td><input type="text" name="title" class="add_title c160w"></td></tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" value="提交" class="addsub"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </form>
+    </div>
+</div>
+<div class="dialog" class="msg"><div class="p-col">添加成功</div></div>
+<include file="Admin/Template/default/common/footer.html"/>
+<script>
+    $(function(){
+        $(".modal").click(function(){
+            var pid=$(this).data('pid');
+            $(".addsub").click(function(){
+                var id=$(this).data('id');
+                var name=$(".add_name").val();
+                var title=$(".add_title").val();
+                $.ajax({
+                    type:'post',
+                    url:"<!--{:U('Auth/add_model')}-->",
+                    data:{
+                        pid:pid,
+                        name:name,
+                        title:title
+                    },
+                    success:function(response){
+                        $("#addsub").fadeOut(200);
+                        location.reload(200);
+                    }
+                })
+            })
+        })
+    })
+</script>

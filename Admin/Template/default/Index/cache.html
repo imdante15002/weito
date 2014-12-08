@@ -1,0 +1,22 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>清空缓存</div>
+        <div class="p-col">
+            <div class="col">
+               <form action="<!--{:U('Index/cache_action')}-->" method="post">
+                   <ul class="list-form xs4">
+                       <li style="padding-top:20px; padding-left:30%; margin-bottom: 20px;">
+                           <input type="checkbox" value="1" name="cache" checked="checked"><span class="fx mrm">缓存</span>
+                           <input type="checkbox" value="1" name="data" checked="checked"><span class="fx mrm">数据</span>
+                           <input type="checkbox" value="1" name="logs" checked="checked"><span class="fx mrm">日志</span>
+                           <input type="checkbox" value="1" name="temp" checked="checked"><span class="fx mrm">临时</span>
+                       </li>
+                       <li  style="padding-left:30%;"><input type="submit" value="确认"></li>
+                   </ul>
+               </form>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

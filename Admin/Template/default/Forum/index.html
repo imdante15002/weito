@@ -1,0 +1,78 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+     <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>板块列表</div>
+        <div class="p-col">
+            <form action="<!--{:U('Forum/upforum')}-->" method="post">
+                <table class="table-list" border="1">
+                    <tbody>
+                        <tr>
+                            <th width="15"><input type="checkbox" id="checkbox_all"></th>
+                            <th>板块名称</th>
+                            <th>访问地址</th>
+                            <th width="200">操作</th>
+                            <th width="50">排序</th>
+                        </tr>
+                        <volist name="forum" id="vo">
+                        <tr>
+                            <td><input type="checkbox" name="tid[]" value="<!--{$vo.id}-->"></td>
+                            <td><span class="xi4"><!--{$vo.html}--></span><!--{$vo.name}--></td>
+                            <td><!--{$vo.url}--></td>
+                            <td>
+                                <a href="<!--{:U('Forum/atd_subforum',array(id=>$vo['id']))}-->" title="添加子板块"><i class="ui i-add"></i></a>
+                                <a href="<!--{:U('Forum/ed_forum',array(id=>$vo['id']))}-->" title="编辑"><i class="ui i-ed"></i></a>
+                                <a href="<!--{:U('Index/prompt',array(id=>$vo['id'],t=>'forum'))}-->" id="aa" title="删除"><i class="ui i-del"></i></a>
+                            </td>
+                             <td><input type="text" class="c2w hm" name="<!--{$vo.id}-->" value="<!--{$vo.sort}-->"></td>
+                        </tr>
+                        </volist>
+                        <tr>
+                            <td colspan="2">
+                                <input type="button" value="添加板块" class="modal" data-modal="add_forum">
+                                 <input type="submit" value="更新排序">
+                                 <input type="button" value="批量删除" class="modal" data-modal="all_del">
+                            </td>
+                            <td colspan="3"></td>
+                        </tr>
+                         <div class="dialog" id="all_del">
+                         <div class="dialog-header">删除确认<a href="javascript:void(0)" class="cls y" data-id="all_del"></a></div>
+                         <div class="p-col">
+                               <input value="批量删除" type="submit" onclick="form.action='/index.php/Admin/forum/del_all_forum.html';form.submit();" />
+                             </div>
+                        </div>
+                    </tbody>
+                </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="dialog" id="add_forum">
+    <div class="dialog-header">添加栏目<a href="javascript:void(0)" class="cls y" data-id="add_forum"></a></div>
+    <div class="p-col">
+        <form action="<!--{:U('forum/add_forum')}-->" method="post">
+            <table class="form-table">
+                <tbody>
+                    <tr><td>板块名称</td><td><input type="text" name="name" class="c200w"></td></tr>
+                    <tr>
+                        <td>关键字</td>
+                        <td><input type="text" name="keywords" class="c300w"></td>
+                    </tr>
+                    <tr>
+                        <td>描述</td>
+                        <td><input type="text" name="description" class="c300w"></td>
+                    </tr>
+                    <tr>
+                        <td>排序</td>
+                        <td><input type="text" name="sort" class="c6w"></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" value="提交"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

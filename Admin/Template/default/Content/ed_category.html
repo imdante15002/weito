@@ -1,0 +1,29 @@
+
+<include file="Admin/Template/default/common/header.html"/>
+
+<div id="main" class="cl">
+    <div class="p-col cl">
+        <include file="Admin/Template/default/Content/pub_menu.html"/>
+        <div class="p-col brd">
+            <div class="ui-th"><i class="ui i-talk2"></i>填写栏目信息</div>
+            <div class="p-col">
+                <ul class="list-form">
+                    <form action="<!--{:U('Content/ed_category_exe')}-->" method="post">
+                        <input type="hidden" name="id" value="<!--{$ei.id}-->">
+                        <li><label for="">名称</label><input type="text" name="name" class="c200w" value="<!--{$ei.name}-->"></li>
+                        <li><label for="">上级</label>
+                            <select name="pid">
+                                <volist name="category" id="vo">
+                                <option value="<!--{$vo.id}-->" <if condition="$pid eq $vo['id']">selected = "true"</if>><!--{$vo.html}--><!--{$vo.name}--></option>
+                                </volist>
+                            </select>
+                        </li>
+                        <li><label for="">排序</label><input type="text" name="sort" class="cs6w" value="<!--{$ei.sort}-->"></li>
+                        <li><label for="">&nbsp;</label><input type="submit" value="提交"></li>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

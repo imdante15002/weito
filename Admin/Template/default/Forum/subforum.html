@@ -1,0 +1,47 @@
+<include file="Admin/Template/default/common/header.html"/>
+
+<div id="main" class="cl">
+    <div class="p-col">
+       <include file="Admin/Template/default/Forum/pub_menu.html"/>
+        <div class="tw"></div>
+        <div class="p-col brd">
+            <div class="ui-th">
+                <i class="ui i-talk2"></i>版块<if condition="$c eq 1">添加子<else/>修改</if>
+            </div>
+            <div class="tf"></div>
+            <div class="list-form">
+                <ul>
+                    <if condition="$c eq 1">
+                        <form action="<!--{:U('Forum/add_forum')}-->" method="post">
+                    <else/>
+                        <form action="<!--{:U('Forum/save_forum')}-->" method="post">
+                    </if>
+                    <input type="hidden" name="id" value="<!--{$f.id}-->">
+                    <li><label for="">板块名称</label><input type="text" name="name" id="name" value="<!--{$f.name}-->"></li>
+                    <li><label for="">板块链接</label><input type="text" name="url" id="url" class="c120w" value="<!--{$f.url}-->"><span class="fx">板块链接为板块名称汉语拼音</span></li>
+                    <li><label for="">上级板块</label>
+                        <if condition="$c eq 'add'">
+                            <select name="pid">
+                                 <volist name="forum" id="vo">
+                                     <option value="<!--{$vo.id}-->"  <if condition="$pid eq $vo['id']">selected = "true"</if>><!--{$vo.html}--><!--{$vo.name}--></option>
+                                 </volist>
+                            </select>
+                        <else/>
+                            <select name="pid">
+                             <volist name="forum" id="vo">
+                                 <option value="<!--{$vo.id}-->"  <if condition="$f['pid'] eq $vo['id']">selected = "true"</if>><!--{$vo.html}--><!--{$vo.name}--></option>
+                             </volist>
+                        </select>
+                        </if>
+                    </li>
+                    <li><label for="">关键字</label><input type="text" name="keywords" class="c400w"value="<!--{$f.keywords}-->"></li>
+                    <li><label for="">描述</label><input type="text" name="description" class="c400w"value="<!--{$f.description}-->"></li>
+                    <li><label for="">排序</label><input type="text" name="sort" class="c8w" value="<!--{$f.sort}-->"></li>
+                    <li><input type="submit" value="确认"></li>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+<include file="Admin/Template/default/common/footer.html"/>

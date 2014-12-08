@@ -1,0 +1,114 @@
+<include file="Admin/Template/default/common/header.html"/>
+
+<div id="main" class="cl">
+    <div class="colbox">
+         <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>使用手册管理</div>
+        <div class="p-col">
+            <form action="<!--{:U('Content/upmanual')}-->" method="post">
+            <table class="table-list" border="1">
+                <tbody>
+                    <tr>
+                        <td colspan="8" class="btn-tr">
+                            <input type="button" value="添加说明" class="modal" data-modal="add_channel">
+                            <input type="submit" value="更新排序">
+                             <input type="button" value="批量删除" class="modal" data-modal="all_del">
+                        </td>  
+                    </tr>    
+                    <tr>
+                        <th width="15"><input type="checkbox" id="checkbox_all"></th>
+                        <th>名称</th>
+                        <th width="40">id/pid</th>
+                        <th width="80">链接地址</th>
+                        <th width="50">可浏览</th>
+                        <th width="40">浏览</th>
+                        <th width="120">操作</th>
+                        <th width="30">排序</th>
+                    </tr>
+                    <volist name="channel" id="vo" mod="2">
+                    <tr <eq name="mod" value="1">class="spec"</eq>>
+                        <td><input type="checkbox" name="tid[]" value="<!--{$vo.id}-->"></td>
+                        <td><span class="ccc"><!--{$vo.html}--></span><!--{$vo.name}--></td>
+                        <td><!--{$vo.id}-->/<!--{$vo.pid}--></td>
+                        <td><!--{$vo.url}--></td>
+                        <td><if condition="$vo.type eq 1">是<else/>否</if></td>
+                        <td><!--{$vo.views}--></td>
+                        <td>
+                            <if condition="$vo.type eq 1"><a href="<!--{:U('Content/add_manual_content',array(id=>$vo['id']))}-->" title="编辑内容"><i class="ui i-add"></i></a></if>
+                            <a href="<!--{:U('Content/ed_manual',array(id=>$vo['id']))}-->" title="编辑"><i class="ui i-ed"></i></a>
+                            <a href="<!--{:U('Index/prompt',array(id=>$vo['id'],t=>'chn'))}-->" id="aa" title="删除"><i class="ui i-del"></i></a>
+                        </td>
+                        <td><input type="text" class="c2w hm" name="<!--{$vo.id}-->" value="<!--{$vo.sort}-->"></td>
+                    </tr>
+                    </volist>
+                    <tr>
+                        <td colspan="8" class="btn-tr">
+                            <input type="button" value="添加说明" class="modal" data-modal="add_channel">
+                            <input type="submit" value="更新排序">
+                             <input type="button" value="批量删除" class="modal" data-modal="all_del">
+                        </td>  
+                    </tr>    
+                </tbody>
+            </table>
+            <div class="dialog" id="all_del">
+                 <div class="dialog-header">删除确认<a href="javascript:void(0)" class="cls y" data-id="all_del"></a></div>
+                 <div class="p-col">
+                     <input  value="批量删除" type="submit"onclick="form.action='/index.php/Admin/Content/del_all_manual.html';form.submit();"/>
+                 </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="dialog" id="add_channel">
+    <div class="dialog-header">添加栏目<a href="javascript:void(0)" class="cls y" data-id="add_channel"></a></div>
+    <div class="p-col">
+        <form action="<!--{:U('Content/add_manual')}-->" method="post">
+            <table class="form-table">
+                <tbody>
+                     <tr>
+                        <td>手册分类</td>
+                        <td>
+                            <input type="radio" name="mid" value="0"><span class="form-text">软件</span>
+                            <input type="radio" name="mid" value="1"><span class="form-text">app</span>
+                            <input type="radio" name="mid" value="2"><span class="form-text">微信</span>
+                        </td>
+                    </tr>
+                    <tr><td>名称</td><td><input type="text" name="name" id="name" class="c200w"></td></tr>
+                    <tr><td>上级</td>
+                        <td><select name="pid">
+                            <option value="0" >请选择</option>
+                            <volist name="channel" id="vo">
+                                <option value="<!--{$vo.id}-->" <if condition="$type eq $vo['id']">selected = "true"</if>><!--{$vo.html}--><!--{$vo.name}--></option>
+                            </volist>
+                        </select>
+                        </td>
+                    </tr>
+                    <tr><td>栏目连接</td><td><input type="text" name="url" class="c160w" id="url"></td></tr>
+                    <tr>
+                        <td>栏目类型</td>
+                        <td>
+                            <input type="radio" name="type" value="1"><span class="form-text">内容页</span>
+                            <input type="radio" name="type" value="2" checked="checked"><span class="form-text">引导页</span>
+                        </tr>
+                    <tr>
+                        <td>排序</td>
+                        <td><input type="text" name="sort" class="c6w"></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" value="提交"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>
+<script type="text/javascript" src="/Static/common/js/jQuery.Hz2Py-min.js"></script>
+<script type="text/javascript">
+$(function (){
+    $("#name").hover(function (){
+        $("#url").val($(this).toPinyin());
+    });
+});
+</script>

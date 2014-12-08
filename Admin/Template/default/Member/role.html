@@ -1,0 +1,75 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+   <div class="colbox">
+         <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>管理组</div>
+        <div class="p-col">
+            <table class="table-list" border="1">
+                <tbody>
+                    <tr>
+                        <th width="20">groupid</th>
+                        <th>组名</th>
+                        <th>操作</th>
+                    </tr>
+                    <volist name="role" id="vo">
+                    <tr>
+                        <td><!--{$vo.id}--></td>
+                        <td><!--{$vo.title}--></td>
+                        <td width="120">
+                            <a href="" title="添加管理人员"><i class="ui i-add"></i></a>
+                            <a href="" title="编辑"><i class="ui i-ed"></i></a>
+                            <a href="" title="删除"><i class="ui i-del"></i></a>
+                        </td>
+                    </tr>
+                    </volist>
+                    <tr>
+                        <td colspan="3">
+                            <input type="button" value="添加管理组" class="modal" data-modal="add_role">
+                            <input type="button" value="添加管理员" class="modal" data-modal="add_user">
+                        </td>
+                    </tr>
+                 </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="dialog" id="add_role">
+    <div class="dialog-header">添加管理组<a href="javascript:void(0)" class="cls y" data-id="add_role"></a></div>
+    <div class="p-col">
+            <form action="<!--{:U('Member/add_role')}-->" method="post">
+                <table class="form-table">
+                    <tbody>
+                        <tr>
+                            <td align="right">管理组名称</td>
+                           <td><input type="text" name="title"></td>
+                        </tr>
+                        <tr><td>&nbsp;</td><td><input type="submit" value="提交"></td></tr>
+                    </tbody>
+                </table>
+            </form>
+    </div>
+</div>
+<div class="dialog" id="add_user">
+    <div class="dialog-header">添加管理人员<a href="javascript:void(0)" class="cls y" data-id="add_user"></a></div>
+    <div class="p-col">
+            <form action="<!--{:U('Forum/add_category')}-->" method="post">
+                <table class="form-table">
+                    <tbody>
+                        <tr>
+                            <td align="right">所属管理组</td>
+                            <td>
+                                <select name="gid" id="forum">
+                                    <option value="">请选择</option>
+                                    <volist name="role" id="vo">
+                                        <option value="<!--{$vo.id}-->"><!--{$vo.title}--></option>
+                                    </volist>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr><td>用户UID</td><td><input type="text" name="uid"></td></tr>
+                        <tr><td>&nbsp;</td><td><input type="submit" value=提交></td></tr>
+                    </tbody>
+                </table>
+            </form>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

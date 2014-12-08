@@ -1,0 +1,70 @@
+<include file="Admin/Template/default/common/header_common.html"/>
+<!--[if IE 6]>
+    <div class="low-ie-bar">温馨提示：您现在使用的浏览器版本过低，可能会导致网页部分内容无法正常显示。请立即 <a href="http://www.microsoft.com/china/windows/IE/upgrade/index.aspx" target="_blank">免费升级</a> 或下载使用 <a href="https://www.google.com/intl/zh-CN/chrome/browser/" target="_blank">谷歌浏览器</a>。
+    </div>
+<![endif]-->
+<div id="header" class="pf cl">
+    <div class="topbar">
+        <h2 class="logo z"><a href="__MODULE__"><img src="__acpimg__/acp_logo.png" alt="DantesCMS Enterprise 内容管理系统" width="257" height="40"></a></h2>
+        <div class="topnav">
+            <ul>
+                <li><a href="<!--{:U('Member/repassword')}-->" title="点击修改个人信息"><img src="__cmmimg__/user.png" width="30" height="30" class="avtimg vm"></a>您好：<!--{$Think.SESSION.username}-->,欢迎使用DantesCMS！</li>
+                <li><a href="__MODULE__" title="管理首页"><i class="ui">A</i></a></li>
+                <li><a href="/" target="_blank" title="站点首页"><i class="ui">P</i></a></li>
+                <li><a href="<!--{:U('Public/logout')}-->" class="mrm logout" title="退出"><i class="ui">m</i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="wp" class="cl">
+<div id="aside" class="pf cl">
+    <div id="menu">
+        <div class="action">
+            <ul>
+                <li style=" background-image: none; border-top:none" <if condition="CONTROLLER_NAME eq Index">class="active"</if>><a href="__MODULE__" class="blcok"><i class="ui">A</i>管理首页<s style="margin-top:14px;"></s></a></li>
+                <li style=" background-image: none;" <if condition="ACTION_NAME eq add_article">class="active"</if>><a href="<!--{:U('Content/add_article')}-->" style=" display:block;border-top:none; background-image:none" ><i class="ui">S</i>发布文章<s style="margin-top:14px;"></s></a></li>
+                <li <if condition="(CONTROLLER_NAME eq 'Content') and (ACTION_NAME neq 'add_article')">class="active"</if>><i class="ui">h</i>内容管理</li>
+                <ol>
+                     <li><a href="<!--{:U('Content/channel')}-->" <if condition="ACTION_NAME eq channel">class="active"</if>>栏目管理<s></s></a></li>
+                    <li><a href="<!--{:U('Content/article')}-->" <if condition="ACTION_NAME eq article">class="active"</if>>内容管理<s></s></a></li>
+                    <li><a href="<!--{:U('Content/page')}-->" <if condition="ACTION_NAME eq page">class="active"</if>>页面管理<s></s></a></li>
+                    <li><a href="<!--{:U('Content/category')}-->" <if condition="ACTION_NAME eq category">class="active"</if>>分类管理<s></s></a></li>
+                    <li><a href="<!--{:U('Content/slides')}-->" <if condition="ACTION_NAME eq slides">class="active"</if>>幻灯片设置<s></s></a></li>
+                    <li><a href="<!--{:U('Content/recycle')}-->" <if condition="ACTION_NAME eq recycle">class="active"</if>>内容回收站<s></s></a></li>
+                </ol>
+                <li <if condition="CONTROLLER_NAME eq 'Forum'">class="active"</if>><i class="ui">L</i>论坛管理</li>
+                <ol>
+                    <li><a href="<!--{:U('Forum/index')}-->" <if condition="ACTION_NAME eq index">class="active"</if>>板块列表<s></s></a></li>
+                    <li><a href="<!--{:U('Forum/category')}-->" <if condition="ACTION_NAME eq category">class="active"</if>>帖子分类<s></s></a></li>
+                    <li><a href="<!--{:U('Forum/thread')}-->" <if condition="ACTION_NAME eq thread">class="active"</if>>所有帖子<s></s></a></li>
+                     <li><a href="<!--{:U('Forum/examine')}-->" <if condition="ACTION_NAME eq examine">class="active"</if>>内容审核<s></s></a></li>
+                </ol>
+                <li <if condition="CONTROLLER_NAME eq 'Operate'">class="active"</if>><i class="ui">g</i>运营管理</li>
+                <ol>
+                     <li><a href="<!--{:U('Operate/site_notice')}-->" <if condition="ACTION_NAME eq site_notice">class="active"</if>>站务公告<s></s></a></li>
+                    <li><a href="<!--{:U('Operate/flink')}-->" <if condition="ACTION_NAME eq flink">class="active"</if>>友情链接<s></s></a></li>
+                    <li><a href="<!--{:U('Operate/advertisement')}-->" <if condition="ACTION_NAME eq advertisement">class="active"</if>>广告运营<s></s></a></li>
+                    <li><a href="<!--{:U('Operate/recommend')}-->" <if condition="ACTION_NAME eq recommend">class="active"</if>>站长推荐<s></s></a></li>
+                </ol>
+                <li <if condition="CONTROLLER_NAME eq 'Member'">class="active"</if>><i class="ui">B</i>用户管理</li>
+                <ol>
+                    <li><a href="<!--{:U('Member/index')}-->" <if condition="ACTION_NAME eq index">class="active"</if>>用户列表<s></s></a></li>
+                    <li><a href="<!--{:U('Member/user')}-->" <if condition="ACTION_NAME eq user">class="active"</if>>用户组<s></s></a></li>
+                    <li><a href="<!--{:U('Member/role')}-->" <if condition="ACTION_NAME eq role">class="active"</if>>管理组<s></s></a></li>
+                    <li><a href="<!--{:U('Member/repassword')}-->" <if condition="ACTION_NAME eq repassword">class="active"</if>>修改密码<s></s></a></li>
+                </ol>
+                <li <if condition="(CONTROLLER_NAME eq 'Config') or (CONTROLLER_NAME eq 'Auth') or (CONTROLLER_NAME eq 'Model')">class="active"</if>><i class="ui">e</i>站点配置</li>
+                <ol>
+                     <li><a href="<!--{:U('Config/index')}-->" <if condition="(CONTROLLER_NAME eq 'Config') and (ACTION_NAME eq index)">class="active"</if>>站点配置<s></s></a></li>
+                     <li><a href="<!--{:U('Config/seo')}-->" <if condition="(CONTROLLER_NAME eq 'Config') and (ACTION_NAME eq seo)">class="active"</if>>SEO标题<s></s></a></li>
+                    <li><a href="<!--{:U('Config/upload')}-->" <if condition="ACTION_NAME eq upload">class="active"</if>>性能优化<s></s></a></li>
+                    <li><a href="<!--{:U('Config/app_key')}-->" <if condition="ACTION_NAME eq app_key">class="active"</if>>端口设置<s></s></a></li>
+                    <li><a href="<!--{:U('Auth/qmenu')}-->" <if condition="(CONTROLLER_NAME eq Auth) and (ACTION_NAME eq qmenu)">class="active"</if>>快捷菜单<s></s></a></li>
+                    <li><a href="<!--{:U('Auth/index')}-->" <if condition="(CONTROLLER_NAME eq Auth) and (ACTION_NAME eq index)">class="active"</if>>模块管理<s></s></a></li>
+                    <li><a href="<!--{:U('Auth/console')}-->" <if condition="ACTION_NAME eq console">class="active"</if>>功能配置<s></s></a></li>
+                </ol>
+                <li style=" background-image: none;"><a href="<!--{:U('Index/cache')}-->" class="blcok" ><i class="ui">Q</i>清空缓存<s></s></a></li>
+            </ul>
+        </div>
+    </div>
+</div>

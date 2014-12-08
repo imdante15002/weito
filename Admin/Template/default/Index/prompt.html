@@ -1,0 +1,17 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><i class="ui">V</i>删除确认</div>
+        <div class="p-col">
+            <div class="guide p-col">
+                <div class="prompt">
+                    <h3 class="xs4">您将删除 id 为 <span class="red"><!--{$id}--></span>  的<!--{$type}--> <span class="xs2 red">特别提示：该操作不可逆，请谨慎操作</span></h3>
+                    <div class="prompt_enter">
+                        <a href="<!--{$a}-->" class="btn">确认删除</a> &nbsp;&nbsp;<a href="javascript:history.go(-1)" class="btn exit">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

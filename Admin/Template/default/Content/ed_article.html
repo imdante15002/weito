@@ -1,0 +1,55 @@
+<include file="Admin/Template/default/common/header.html"/>
+<css file="__umeditor__/themes/default/css/umeditor.css"/>
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>内容编辑</div>
+        <div class="p-col cl">
+            <ul class="list-form xi3">
+                <form action="<!--{:U('Content/ed_article_exe')}-->" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="tid" value="<!--{$ed.tid}-->">
+                    <input type="hidden" name="litpic" value="<!--{$ed.litpic}-->">
+                    <table class="form-table">
+                        <tbody>
+                           <tr>
+                                <td>标题</td>
+                                <td><input type="text" name="title" class="c400w" value="<!--{$ed.title}-->"></td>
+                            </tr>
+                            <tr>
+                                <td>简要描述</td>
+                                <td><input type="text" name="description" class="c400w c60h" value="<!--{$ed.description}-->"></td>
+                            </tr>
+                            <tr>
+                                <td>选择栏目</td>
+                                <td><select name="catid">
+                                    <option value="">请选择栏目</option>
+                                     <volist name="channel" id="vo">
+                                            <option value="<!--{$vo.id}-->" <if condition="$ed['catid'] eq $vo['id']">selected = "true"</if>><!--{$vo.html}--><!--{$vo.name}--></option>
+                                        </volist>
+                                </select></td>
+                            </tr>
+                            <tr><td>文章内容</td>
+                                <td>
+                                    <textarea name="body" id="Content"><!--{$ed.body|htmlspecialchars_decode|stripslashes}--></textarea>                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>关键字</td>
+                                <td><input type="text" name="keywords" class="c400w" value="<!--{$ed.keywords}-->"></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="submit" value="发布"></td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                </form>
+            </ul>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>
+<js file="/Static/ueditor/ueditor.config.js"/>
+<js file="/Static/ueditor/ueditor.all.min.js"/>
+<js file="/Static/ueditor/ue_config.js"/>
+</body>
+</html>

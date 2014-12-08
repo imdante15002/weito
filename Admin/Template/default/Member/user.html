@@ -1,0 +1,50 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+   <div class="colbox">
+         <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>用户组</div>
+        <div class="p-col">
+           <table class="table-list" border="1">
+               <tbody>
+                    <tr>
+                        <th width="20">groupid</th>
+                        <th>组名</th>
+                        <th width="120">操作</th>
+                    </tr>
+                    <volist name="role" id="vo">
+                    <tr>
+                        <td><!--{$vo.id}--></td>
+                        <td><!--{$vo.title}--></td>
+                        <td>
+                            <a href="" title="添加管理人员"><i class="ui i-add"></i></a>
+                            <a href="" title="编辑"><i class="ui i-ed"></i></a>
+                            <a href="" title="删除"><i class="ui i-del"></i></a>
+                        </td>
+                    </tr>
+                    </volist>
+                    <tr>
+                        <td colspan="3">
+                             <input type="button" value="添加管理组" class="modal" data-modal="add_role">
+                        </td>
+                    </tr>
+               </tbody>
+           </table>
+        </div>
+    </div>
+</div>
+<div class="dialog" id="add_role">
+    <div class="dialog-header">添加用户组组<a href="javascript:void(0)" class="cls y" data-id="add_role"></a></div>
+    <div class="p-col">
+            <form action="<!--{:U('Member/add_user')}-->" method="post">
+                <table class="form-table">
+                    <tbody>
+                        <tr>
+                            <td align="right">用户组名称</td>
+                           <td><input type="text" name="title"></td>
+                        </tr>
+                        <tr><td>&nbsp;</td><td><input type="submit" value="提交"></td></tr>
+                    </tbody>
+                </table>
+            </form>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

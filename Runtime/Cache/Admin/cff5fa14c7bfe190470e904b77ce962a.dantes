@@ -1,0 +1,9 @@
+<?php if (!defined('THINK_PATH')) exit(); if(is_array($cate)): $i = 0; $__LIST__ = $cate;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr class="subcate">
+	<td width="15"><input type="checkbox" name="tid[]" value="<?php echo ($vo["id"]); ?>"></td>
+	<td><?php echo ($vo["name"]); ?></td>
+	<td width="15"><input type="text" class="c2w hm" name="<?php echo ($vo["id"]); ?>" value="<?php echo ($vo["sort"]); ?>"></td>
+	<td width="200">
+	     <a href="<?php echo U('Forum/ed_category',array(id=>$vo['id']));?>" title="编辑"><i class="ui i-ed"></i></a>
+	     <a href="<?php echo U('Forum/del_category',array(id=>$vo['id']));?>" title="删除"><i class="ui i-del"></i></a>
+	</td>
+</tr><?php endforeach; endif; else: echo "" ;endif; ?>

@@ -1,0 +1,60 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>SEO设置</div>
+        <div class="p-col">
+            <div class="col cl">
+                <table class="form-table" width="100%">
+                    <tbody>
+                        <tr>
+                            <th width="20">ID</th>
+                            <th width="80">名称</th>
+                            <th width="300">关键字</th>
+                            <th>描述</th>
+                            <th width="106">操作</th>
+                        </tr>
+                        <tr>
+                            <td colspan="5">&nbsp;</td>
+                        </tr>
+                        <volist name="channel" id="vo">
+                            <tr>
+                                <td><!--{$vo.id}--></td>
+                                <td><!--{$vo.name}--></td>
+                                <td><input type="text" name="keywords" value="<!--{$vo.keywords}-->" class="c300w" id="key_<!--{$vo.id}-->"></td>
+                                <td><input type="text" name="description" value="<!--{$vo.description}-->" class="c400w" id="des_<!--{$vo.id}-->"></td>
+                                <td><input type="button" value="保存" class="btn" data-id="<!--{$vo.id}-->" id="btn_<!--{$vo.id}-->"></td>
+                            </tr>
+                        </volist>
+                        <tr>
+                            <td colspan="5" class="xs2">修改提示：请逐一进行保存，并且刷新后才可看到修改后的数据</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>
+<script>
+    $(function(){
+        $(".btn").click(function(){
+            var id=$(this).data('id');
+            var key=$("#key_"+id).val();
+            var des=$("#des_"+id).val();
+            $.ajax({
+                type:'get',
+                url:"<!--{:U('Config/up_seo_exe')}-->",
+                data:{
+                    id:id,
+                    keywords:key,
+                    description:des
+                },
+                success:function(response,xhr){
+                    //alert(response);
+                    $("#btn_"+id).attr('value',response);
+                    location.reload(2000);
+                }
+            })
+        })
+    })
+</script>

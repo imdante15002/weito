@@ -1,0 +1,26 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>apk配置</div>
+        <div class="p-col">
+             <form action="<!--{:U('Config/up_appkey')}-->" method="post">
+                <table class="form-table" width="100%">
+                    <tbody>
+                      <input type="hidden" value="1" name="id">
+                      <tr><td colspan="2">接口1：</td></tr>
+                      <tr><td align="right" width="80">appid</td><td><input type="text" name="appid1" value="<!--{$conf.appid1}-->" class="c280w"></td></tr>
+                      <tr><td align="right">appkey</td><td><input type="text" name="appkey1" value="<!--{$conf.appkey1}-->" class="c450w"></td></tr>
+                      <tr><td colspan="2">接口2：</td></tr>
+                      <tr><td align="right">appid2</td><td><input type="text" name="appid2" value="<!--{$conf.appid2}-->" class="c280w"></td></tr>
+                      <tr><td align="right">appkey2</td><td><input type="text" name="appkey2" value="<!--{$conf.appkey2}-->" class="c450w"></td></tr>
+                      <tr><td colspan="2">接口3：</td></tr>
+                      <tr><td align="right">appid3</td><td><input type="text" name="appid3" value="<!--{$conf.appid3}-->" class="c280w"></td></tr>
+                      <tr><td align="right">appkey3</td><td><input type="text" name="appkey3" value="<!--{$conf.appkey3}-->" class="c450w"></td></tr>
+                      <tr><td for="">&nbsp;</td><td><input type="submit" value="提交"></td></tr>
+                      </tbody>
+                    </table>
+                  </form>
+            </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

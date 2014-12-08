@@ -1,0 +1,48 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>分类管理</div>
+        <div class="p-col">
+            <form action="<!--{:U('Content/ed_channel_exe')}-->" method="post">
+                <table class="form-table">
+                    <tbody>
+                        <input type="hidden" name="id" value="<!--{$ei.id}-->">
+                        <tr><td>名称</td><td><input type="text" name="name" id="name" class="c200w" value="<!--{$ei.name}-->"></td></tr>
+                        <tr><td>上级</td>
+                            <td><select name="pid">
+                                    <option value="">请选择栏目</option>
+                                <volist name="channel" id="vo">
+                                    <option value="<!--{$vo.id}-->" <if condition="$ei['pid'] eq $vo['id']">selected</if>><!--{$vo.html}--><!--{$vo.name}--></option>
+                                </volist>
+                            </select></td>
+                        </tr>
+                        <tr><td>栏目链接</td><td><input type="text" name="url" id="url" class="c160w" value="<!--{$ei.url}-->"></td></tr>
+                        <tr><td>显示模板</td><td><input type="text" name="tpl" class="c160w" value="<!--{$ei.tpl}-->"></td></tr>
+                        <tr><td>栏目类型</td>
+                            <td><input type="radio" name="type" value="1" <if condition="$ei.type eq 1">checked="checked"</if>><span class="form-text">单页面</span>
+                            <input type="radio" name="type" value="2" <if condition="$ei.type eq 2">checked="checked"</if>><span class="form-text">列表页</span>
+                            <input type="radio" name="type" value="3" <if condition="$ei.type eq 3">checked="checked"</if>><span class="form-text">封面面</span></td>
+                        </tr>
+                        <tr><td>导航显示</td>
+                            <td><input type="radio" name="nav" value="1" <if condition="$ei.nav eq 1">checked="checked"</if>><span class="form-text">显示</span>
+                            <input type="radio" name="nav" value="0" <if condition="$ei.nav eq 0">checked="checked"</if>><span class="form-text">不显示</span></td>
+                        </tr>
+                        <tr><td>关键字</td><td><input type="text" name="keywords" value="<!--{$ei.keywords}-->" class="c400w"></td></tr>
+                        <tr><td>栏目描述</td><td><input type="text" name="description" value="<!--{$ei.description}-->" class="c400w"></td></tr>
+                        <tr><td>排序</td><td><input type="text" name="sort" class="cs6w" value="<!--{$ei.sort}-->"></td></tr>
+                        <tr><td>&nbsp;</td><td><input type="submit" value="提交"></td></tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>
+<script type="text/javascript" src="/Static/common/js/jQuery.Hz2Py-min.js"></script>
+<script type="text/javascript">
+$(function (){
+    $("#name").hover(function (){
+        $("#url").val($(this).toPinyin());
+    });
+});
+</script>

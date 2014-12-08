@@ -1,0 +1,22 @@
+<header class="header">
+	<div class="topbar">
+		<div class="wp cl">
+			<h2 class="logo">
+				<a href="<!--{$G.siteurl}-->">微图网</a><span class="xs2">weito.wang 做最独特的游戏图片社区</span>
+			</h2>
+			<div class="search">
+				<form action="search" method="get">
+					<input type="text" name="keyword" placeholder="搜一下吧" class="keyword"><input type="submit" class="search-btn" value="搜索">
+				</form>
+			</div>
+		</div>
+	</div>
+	<nav class="nav z">
+			<ul class="wp hm">
+				<li><a href="<!--{$G.siteurl}-->">微图首页</a></li>
+				<volist name="channel" id="vo">
+					<li <if condition="$vo['url'] eq ACTION_NAME"> class="active"</if>><a href="<!--{$G.siteurl}-->/<!--{$vo.url}-->.html"><!--{$vo.name}--></a></li>
+				</volist>
+			</ul>
+		</nav>
+</header>

@@ -1,0 +1,62 @@
+<include file="Admin/Template/default/common/header.html"/>
+
+<div id="main" class="cl">
+    <div class="colbox">
+       <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>站点公告</div>
+        <div class="p-col">
+        <table class="table-list" border="1">
+            <tbody>
+                <tr>
+                    <th width="15">id</th>
+                    <th>链接标题</th>
+                    <th width="200">链接地址</th>
+                    <th width="120">操作</dd>
+                </tr>
+                <volist name="list" id="vo">
+                <tr>
+                    <td><!--{$vo.id}--></td>
+                    <td><!--{$vo.linkname}--></td>
+                    <td><!--{$vo.linkurl}--></td>
+                    <td>
+                        <a href="<!--{:U('Operate/ed_notice',array(id=>$vo['id']))}-->"><i class="ui">S</i></a>
+                        <a href="<!--{:U('Operate/del_notice',array(id=>$vo['id']))}-->"><i class="ui">V</i></a>
+                    </td>
+                </tr>
+                </volist>
+                <tr>
+                    <td colspan="2"><input type="button" value="添加链接" class="modal" data-modal="add_flink"></td>
+                    <td colspan="2"><div class="page"><!--{$page}--></div></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+<div class="dialog" id="add_flink">
+    <div class="dialog-header">添加链接<a href="javascript:void(0)" class="cls y" data-id="add_flink"></a></div>
+    <div class="p-col">
+        <form action="/index.php/Admin/Operate/add_flink.html" method="post">
+            <table class="form-table">
+                <tbody>
+                    <tr>
+                        <td>名称</td>
+                        <td><input type="text" name="linkname" class="c200w"></td>
+                    </tr>
+                    <tr>
+                        <td>链接地址</td>
+                        <td><input type="text" name="linkurl" class="c200w"></td>
+                    </tr>
+                    <tr>
+                        <td>排序</td>
+                        <td><input type="text" name="sort" class="c8w"></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" value="提交"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

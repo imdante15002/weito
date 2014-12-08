@@ -1,0 +1,47 @@
+<include file="Admin/Template/default/common/header.html"/>
+
+<div id="main" class="cl">
+    <div class="p-col">
+        <include file="Admin/Template/default/Member/pub_menu.html"/>
+        <div class="tw"></div>
+        <div class="p-col brd">
+            <div class="p-col">
+                <ul class="list-form">
+                    <li><label for="">用户名</label><input type="text" name="username" class="c200w"></li>
+                    <li><label for="">密码</label><input type="password" name="password" class="c200w"></li>
+                    <li>
+                        <label for="">用户组</label>
+                        <select name="user" id="">
+                            <option value="0">请选择</option>
+                            <volist name="user" id="vo">
+                                <option value="<!--{$vo.id}-->"><!--{$vo.title}--></option>
+                            </volist>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="">管理组</label>
+                         <select name="admin" id="">
+                            <option value="0">请选择</option>
+                            <volist name="admin" id="vo">
+                                <option value="<!--{$vo.id}-->"><!--{$vo.title}--></option>
+                            </volist>
+                        </select>
+                    </li>
+                    <li><label for="">验证码</label><input type="text" name="verify" placeholder="点击图片刷新"class="c120w">
+                    <img src="<!--{:U('Public/verify')}-->" alt="" class="vm cursor" id="verifyImg" onclick="fleshVerify()">
+                    </li>
+                    <li><label for="">&nbsp;</label><input type="submit"  value="确认添加"></li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>
+<script language="JavaScript">
+     function fleshVerify(){ 
+        //重载验证码
+        var time = new Date().getTime();
+            document.getElementById('verifyImg').src= '<!--{:U('Admin/Public/verify','','')}-->/'+time;
+     }
+ </script>

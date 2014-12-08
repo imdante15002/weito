@@ -1,0 +1,30 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><i class="ui">g</i>欢迎使用WeitCMS <i>V2.0</i></div>
+        <div class="p-col">
+            <div class="col">
+                <ul class="index-qmeun">
+                    <li><a href="<!--{:U('Content/add_article')}-->" class="iui"><i class="ui">S</i><p>发布内容</p></a></li>
+                    <li><a href="<!--{:U('Content/slides')}-->" class="iui"><i class="ui">I</i><p>幻灯片</p></a></li>
+                    <li><a href="<!--{:U('Operate/flink')}-->" class="iui"><i class="ui">v</i><p>友情链接</p></a></li>
+                    <li><a href="<!--{:U('Config/index')}-->" class="iui"><i class="ui">e</i><p>站点设置</p></a></li>
+                    <li><a href="<!--{:U('Auth/qmenu')}-->" class="iui"><i class="ui">e</i><p>添加菜单</p></a></li>
+                </ul>
+            </div>
+            <div class="tf"></div>
+            <div class="col">
+                <ul class="list xs4">
+                    <li><b>服务器信息：</b><?php echo php_uname('s');echo php_uname('r') ;?><span class="pi">|</span>
+                        <span>当前域名:<?php echo $_SERVER{"HTTP_HOST"};
+                                    ?></span></li>
+                        <li><span><?php echo '<b>'."PHP版本：".'</b>'.PHP_VERSION;?></span></li>
+                            <li><b>设计团队：</b>(程序/前端/设计)Dantes</li>
+                            <li><b>联系方式：</b>qq：763093576 <span class="pi">|</span>邮箱：<763093576@qq.com></li>
+                        <li><b>技术支持：</b><a href="javascript:void(0)">Weithree设计</a><span class="pi">|</span>&copy;2014-2015 WeitCMS v2.0</li>
+                </ul>
+            </div>
+        </div><!-- //End p-col -->
+    </div><!--//End colbox -->
+</div><!--//End main -->
+<include file="Admin/Template/default/common/footer.html"/>

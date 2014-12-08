@@ -1,0 +1,68 @@
+<include file="Admin/Template/default/common/header.html"/>
+
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui">b</i>内容列表</div>
+        <div class="p-col">
+            <div class="col"><a href="<!--{:U('Content/add_article')}-->" class="btn">发布内容</a></div>
+            <div class="t"></div>
+            <form action="" method="get">
+            <table class="table-list" border="1">
+                <tbody>
+                    <tr>
+                        <th width="15"><input type="checkbox" id="checkbox_all"></th>
+                        <th>标题</th>
+                        <th width="120">栏目</th>
+                        <th width="60">作者</th>
+                        <th width="80">发布时间</th>
+                        <th width="40">浏览</th>
+                        <th width="60">操作</th>
+                    </tr>
+                    <volist name="list" id="vo" mod="2">
+                    <tr <eq name="mod" value="1">class="spec"</eq>>
+                        <td><input type="checkbox" name="tid[]" value="<!--{$vo.id}-->"></td>
+                        <td><!--{$vo.title}--></td>
+                        <td><!--{$vo.name|default="未知"}--></td>
+                        <td><!--{$vo.username|default="未知"}--></td>
+                        <td><!--{$vo.dateline|date="Y/m/d",###}--></td>
+                        <td><!--{$vo.views|default="未知"}--></td>
+                        <td>
+                            <a href="<!--{:U('Content/ed_article',array(id=>$vo['id']))}-->" title="编辑"><i class="ui">S</i></a>
+                            <a href="<!--{:U('Index/prompt',array(id=>$vo['tid'],t=>'art'))}-->" title="删除"><i class="ui">V</i></a>
+                        </td>
+                    </tr>
+                    </volist>
+                    <tr>
+                        <td colspan="2">
+                             <div class="btn modal" data-modal="move" title="批量移动">批量移动</div>
+                             <div class="btn modal" data-modal="all_del" title="批量删除">批量删除</div>
+                        </td>
+                        <td colspan="5">
+                            <div class="page"><!--{$page}--></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="dialog" id="move">
+                 <div class="dialog-header">批量移动确认<a href="javascript:void(0)" class="cls y" data-id="move"></a></div>
+                 <div class="p-col">
+                        <select name="cid">
+                                <option value="0">选择栏目</option>
+                            <volist name="channel" id="vo">
+                                <option value="<!--{$vo.id}-->"><!--{$vo.name}--></option>
+                            </volist>
+                        </select>&nbsp;&nbsp;&nbsp;<input  value="确认移动" type="submit"onclick="form.action='/index.php/Admin/Content/move';form.submit();"/>
+
+                 </div>
+            </div>
+            <div class="dialog" id="all_del">
+                 <div class="dialog-header">删除确认<a href="javascript:void(0)" class="cls y" data-id="all_del"></a></div>
+                 <div class="p-col">
+                     <input  value="删除确认" type="submit"onclick="form.action='/index.php/Admin/Content/del_all_channel.html';form.submit();"/>
+                 </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+ <include file="Admin/Template/default/common/footer.html"/>

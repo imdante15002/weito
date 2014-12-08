@@ -1,0 +1,27 @@
+
+<include file="Admin/Template/default/common/header.html"/>
+
+<div id="main" class="cl">
+    <div class="p-col">
+        <div class="p-col brd xs4"><i class="ui i-talk3"></i> 这里可以对您网站的内容和栏目进行编辑和更新</div>
+        <div class="tf"></div>
+        <div class="box">
+            <ul class="index-qmeun">
+                <li class="z"><a href="<!--{:U('Content/add_article')}-->" class="iui"> <strong>A</strong>发布内容</a></li>
+                <li class="z"><a href="<!--{:U('Content/channel')}-->" class="iui"> <strong>L</strong>栏目管理</a></li>
+                <li class="z"><a href="<!--{:U('Content/slides')}-->" class="iui"> <strong>S</strong>幻灯片</a></li>
+                <li class="z"><a href="<!--{:U('Content/category')}-->" class="iui"> <strong>C</strong>分类设置</a></li>
+            </ul>
+        </div>
+        <div class="tf"></div>
+        <div class="p-col brd xs3"><i class="ui i-right"></i>内容统计概况</div>
+        <div class="p-col">
+            <ul class="list-text">
+                <li><em>今日更新</em><!--{$count_article_today}--><span class="pi">--</span><em>一周更新</em><!--{$count_article_week}--><span class="pi">--</span><em>文章总数</em><!--{$count_article}--> <span class="pi">--</span><em>文章浏览量</em><!--{$count_article_view}--> </li>
+                <li><em>栏目总数</em><!--{$count_channel}--><span class="pi">--</span><em>导航显示</em></li>
+                <li><em>回收文章</em><!--{$count_recycle}--></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>

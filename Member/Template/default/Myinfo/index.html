@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title><!--{$G.sitename}--></title>
+	<meta name="keywords" content="<!--{$G.keywords}-->" />
+    <meta name="description" content="<!--{$G.description}-->"/>
+    <meta name="powered" content="powered by weitcms">
+    <meta name="contact" content="qq:763093576 mobile:17722515002">
+	<include file="Home/Template/default/common/css.html"/>
+	<css file="__homecss__/slides.css"/>
+</head>
+<body>
+	<include file="Home/Template/default/common/header.html"/>
+	<div id="container">
+		<div class="user-bar bf45 ov">
+			<div class="wp cl ptb-t">
+				<div class="user-avtimg"><a href="/member"><img src="__cmmimg__/user.png" width="52" height="52" title="进入个人用户中心"></a></div>
+				<a href="/member" class="m-user-name"><!--{$user.username}--></a>
+				<span class="xs2 xi3 mrm"><!--{$utype}-->：<!--{$user.group}--></span>
+				<span class="xs2 xi3 mrm">积分：<!--{$user.score}--></span>
+				<span class="xs2 xi3">微币：<!--{$user.wb}--></span>
+				<a href="/post" class="user-a-btn">+分享视屏</a>
+			</div>
+		</div>
+		<div class="wp cl">
+			<section class="col">
+				<div class="m-aside z cl">
+					<ul>
+						<li><a href="/member/basic_infor">个人信息</a></li>
+						<li><a href="/member/head_revision">头像修改</a></li>
+						<li><a href="/member/my_video">我的视频</a></li>
+						<li><a href="/member/my_reply">我的回复</a></li>
+						<li><a href="/user/logout">安全退出</a></li>
+					</ul>
+				</div>
+				<div class="main cl">
+					
+				</div>
+			</section>
+			<div class="tw"></div>
+		</div>
+	</div>
+	<include file="Home/Template/default/common/footer.html"/>
+</body>
+</html>

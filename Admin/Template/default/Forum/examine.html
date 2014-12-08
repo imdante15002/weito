@@ -1,0 +1,46 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>审核列表</div>
+        <div class="p-col">
+            <table class="table-list" border="1">
+                <tbody>
+                    <tr>
+                        <th width="15"><input type="checkbox" id="checkbox_all"></th>
+                        <th>标题</th>
+                        <th width="80">板块</th>
+                        <th width="60">作者</th>
+                        <th width="80">发布时间</th>
+                        <th width="40">ip</th>
+                        <th width="60">操作</th>
+                    </tr>
+                    <volist name="list" id="vo" mod="2">
+                    <tr <eq name="mod" value="1">class="spec"</eq>>
+                        <td><input type="checkbox" name="tid[]" value="<!--{$vo.tid}-->"></td>
+                        <td><!--{$vo.title}--></td>
+                        <td><!--{$vo.name|default="未知"}--></td>
+                        <td><!--{$vo.username|default="未知"}--></td>
+                        <td><!--{$vo.dateline|date="y-m-d",###}--></td>
+                        <td><!--{$vo.pubip|default="未知"}--></td>
+                        <td class="xs2 xi3">
+                            <a href="<!--{:U('Forum/ed_thread',array(tid=>$vo['tid']))}-->" title="编辑">编辑</a>
+                            <a href="<!--{:U('Index/prompt',array(id=>$vo['tid'],t=>'thread'))}-->" title="删除">删除</a>
+                        </td>
+                    </tr>
+                    </volist>
+                    <tr>
+                        <td colspan="2">
+                            <div class="btn" class="modal" id="pass">通过</div>
+                             <div  class="btn" class="modal" id="no">不通过</div>
+                             <div class="btn" class="modal" id="del">删除</div>
+                        </td>
+                        <td colspan="5">
+                            <div class="page"><!--{$page}--></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ <include file="Admin/Template/default/common/footer.html"/>

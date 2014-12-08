@@ -1,0 +1,167 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo ($g["shortname"]); ?>-后台管理中心-powered by dantes!</title>
+    <link rel="Shortcut Icon" type="image/x-icon" href="/Static/dantescms/images/favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="/Static/common/css/common.min.css" />
+    <link rel="stylesheet" type="text/css" href="/Static/dantescms/css/dantes.css" />
+    <!--[if lt IE 9]>
+    <script src="http://assets.dwstatic.com/f=common/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!--[if IE 6]>
+    <div class="low-ie-bar">温馨提示：您现在使用的浏览器版本过低，可能会导致网页部分内容无法正常显示。请立即 <a href="http://www.microsoft.com/china/windows/IE/upgrade/index.aspx" target="_blank">免费升级</a> 或下载使用 <a href="https://www.google.com/intl/zh-CN/chrome/browser/" target="_blank">谷歌浏览器</a>。
+    </div>
+<![endif]-->
+<div id="header" class="pf cl">
+    <div class="topbar">
+        <h2 class="logo z"><a href="/index.php/Admin"><img src="/Static/dantescms/images/acp_logo.png" alt="DantesCMS Enterprise 内容管理系统" width="257" height="40"></a></h2>
+        <div class="topnav">
+            <ul>
+                <li><a href="<?php echo U('Member/repassword');?>" title="点击修改个人信息"><img src="/Static/common/images/user.png" width="30" height="30" class="avtimg vm"></a>您好：<?php echo (session('username')); ?>,欢迎使用DantesCMS！</li>
+                <li><a href="/index.php/Admin" title="管理首页"><i class="ui">A</i></a></li>
+                <li><a href="/" target="_blank" title="站点首页"><i class="ui">P</i></a></li>
+                <li><a href="<?php echo U('Public/logout');?>" class="mrm logout" title="退出"><i class="ui">m</i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="wp" class="cl">
+<div id="aside" class="pf cl">
+    <div id="menu">
+        <div class="action">
+            <ul>
+                <li style=" background-image: none; border-top:none" <?php if(CONTROLLER_NAME == Index): ?>class="active"<?php endif; ?>><a href="/index.php/Admin" class="blcok"><i class="ui">A</i>管理首页<s style="margin-top:14px;"></s></a></li>
+                <li style=" background-image: none;" <?php if(ACTION_NAME == add_article): ?>class="active"<?php endif; ?>><a href="<?php echo U('Content/add_article');?>" style=" display:block;border-top:none; background-image:none" ><i class="ui">S</i>发布文章<s style="margin-top:14px;"></s></a></li>
+                <li <?php if((CONTROLLER_NAME == 'Content') and (ACTION_NAME != 'add_article')): ?>class="active"<?php endif; ?>><i class="ui">h</i>内容管理</li>
+                <ol>
+                     <li><a href="<?php echo U('Content/channel');?>" <?php if(ACTION_NAME == channel): ?>class="active"<?php endif; ?>>栏目管理<s></s></a></li>
+                    <li><a href="<?php echo U('Content/article');?>" <?php if(ACTION_NAME == article): ?>class="active"<?php endif; ?>>内容管理<s></s></a></li>
+                    <li><a href="<?php echo U('Content/page');?>" <?php if(ACTION_NAME == page): ?>class="active"<?php endif; ?>>页面管理<s></s></a></li>
+                    <li><a href="<?php echo U('Content/category');?>" <?php if(ACTION_NAME == category): ?>class="active"<?php endif; ?>>分类管理<s></s></a></li>
+                    <li><a href="<?php echo U('Content/slides');?>" <?php if(ACTION_NAME == slides): ?>class="active"<?php endif; ?>>幻灯片设置<s></s></a></li>
+                    <li><a href="<?php echo U('Content/recycle');?>" <?php if(ACTION_NAME == recycle): ?>class="active"<?php endif; ?>>内容回收站<s></s></a></li>
+                </ol>
+                <li <?php if(CONTROLLER_NAME == 'Forum'): ?>class="active"<?php endif; ?>><i class="ui">L</i>论坛管理</li>
+                <ol>
+                    <li><a href="<?php echo U('Forum/index');?>" <?php if(ACTION_NAME == index): ?>class="active"<?php endif; ?>>板块列表<s></s></a></li>
+                    <li><a href="<?php echo U('Forum/category');?>" <?php if(ACTION_NAME == category): ?>class="active"<?php endif; ?>>帖子分类<s></s></a></li>
+                    <li><a href="<?php echo U('Forum/thread');?>" <?php if(ACTION_NAME == thread): ?>class="active"<?php endif; ?>>所有帖子<s></s></a></li>
+                     <li><a href="<?php echo U('Forum/examine');?>" <?php if(ACTION_NAME == examine): ?>class="active"<?php endif; ?>>内容审核<s></s></a></li>
+                </ol>
+                <li <?php if(CONTROLLER_NAME == 'Operate'): ?>class="active"<?php endif; ?>><i class="ui">g</i>运营管理</li>
+                <ol>
+                     <li><a href="<?php echo U('Operate/site_notice');?>" <?php if(ACTION_NAME == site_notice): ?>class="active"<?php endif; ?>>站务公告<s></s></a></li>
+                    <li><a href="<?php echo U('Operate/flink');?>" <?php if(ACTION_NAME == flink): ?>class="active"<?php endif; ?>>友情链接<s></s></a></li>
+                    <li><a href="<?php echo U('Operate/advertisement');?>" <?php if(ACTION_NAME == advertisement): ?>class="active"<?php endif; ?>>广告运营<s></s></a></li>
+                    <li><a href="<?php echo U('Operate/recommend');?>" <?php if(ACTION_NAME == recommend): ?>class="active"<?php endif; ?>>站长推荐<s></s></a></li>
+                </ol>
+                <li <?php if(CONTROLLER_NAME == 'Member'): ?>class="active"<?php endif; ?>><i class="ui">B</i>用户管理</li>
+                <ol>
+                    <li><a href="<?php echo U('Member/index');?>" <?php if(ACTION_NAME == index): ?>class="active"<?php endif; ?>>用户列表<s></s></a></li>
+                    <li><a href="<?php echo U('Member/user');?>" <?php if(ACTION_NAME == user): ?>class="active"<?php endif; ?>>用户组<s></s></a></li>
+                    <li><a href="<?php echo U('Member/role');?>" <?php if(ACTION_NAME == role): ?>class="active"<?php endif; ?>>管理组<s></s></a></li>
+                    <li><a href="<?php echo U('Member/repassword');?>" <?php if(ACTION_NAME == repassword): ?>class="active"<?php endif; ?>>修改密码<s></s></a></li>
+                </ol>
+                <li <?php if((CONTROLLER_NAME == 'Config') or (CONTROLLER_NAME == 'Auth') or (CONTROLLER_NAME == 'Model')): ?>class="active"<?php endif; ?>><i class="ui">e</i>站点配置</li>
+                <ol>
+                     <li><a href="<?php echo U('Config/index');?>" <?php if((CONTROLLER_NAME == 'Config') and (ACTION_NAME == index)): ?>class="active"<?php endif; ?>>站点配置<s></s></a></li>
+                     <li><a href="<?php echo U('Config/seo');?>" <?php if((CONTROLLER_NAME == 'Config') and (ACTION_NAME == seo)): ?>class="active"<?php endif; ?>>SEO标题<s></s></a></li>
+                    <li><a href="<?php echo U('Config/upload');?>" <?php if(ACTION_NAME == upload): ?>class="active"<?php endif; ?>>性能优化<s></s></a></li>
+                    <li><a href="<?php echo U('Config/app_key');?>" <?php if(ACTION_NAME == app_key): ?>class="active"<?php endif; ?>>端口设置<s></s></a></li>
+                    <li><a href="<?php echo U('Auth/qmenu');?>" <?php if((CONTROLLER_NAME == Auth) and (ACTION_NAME == qmenu)): ?>class="active"<?php endif; ?>>快捷菜单<s></s></a></li>
+                    <li><a href="<?php echo U('Auth/index');?>" <?php if((CONTROLLER_NAME == Auth) and (ACTION_NAME == index)): ?>class="active"<?php endif; ?>>模块管理<s></s></a></li>
+                    <li><a href="<?php echo U('Auth/console');?>" <?php if(ACTION_NAME == console): ?>class="active"<?php endif; ?>>功能配置<s></s></a></li>
+                </ol>
+                <li style=" background-image: none;"><a href="<?php echo U('Index/cache');?>" class="blcok" ><i class="ui">Q</i>清空缓存<s></s></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="main" class="cl">
+    <div class="colbox">
+        <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i-loc2"></i>帖子分类</div>
+        <div class="p-col">
+            <form action="">
+                <table class="table-list" border="1">
+                    <tbody>
+                        <!-- <tr>
+                            <th colspan="4">板块名称</th>
+                        </tr> -->
+                        <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr id="<?php echo ($vo["id"]); ?>" class="cate-th">
+                                <th colspan="4"><?php echo ($vo["name"]); ?></th>
+                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+                        <tr>
+                            <td colspan="4">
+                                 <input type="button" value="添加分类" class="modal" data-modal="add_forum">
+                                 <input type="submit" value="更新排序">
+                                 <input type="button" value="批量删除" class="modal" data-modal="all_del">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table> 
+                <div class="dialog" id="all_del">
+                         <div class="dialog-header">删除确认<a href="javascript:void(0)" class="cls y" data-id="all_del"></a></div>
+                         <div class="p-col">
+                               <input value="批量删除" type="submit" onclick="form.action='/index.php/Admin/forum/del_all_cate.html';form.submit();" />
+                             </div>
+                        </div> 
+            </form>
+        </div>
+    </div>
+</div>
+ <div class="dialog" id="add_forum">
+    <div class="dialog-header">添加分类<a href="javascript:void(0)" class="cls y" data-id="add_forum"></a></div>
+    <div class="p-col">
+            <form action="<?php echo U('Forum/add_category');?>" method="post">
+                <table class="form-table">
+                    <tbody>
+                        <tr>
+                            <td align="right">版块</td>
+                            <td>
+                                <select name="pid" id="forum">
+                                    <option value="">请选择</option>
+                                    <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($vo["id"]); ?>"><?php echo ($vo["name"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr><td>分类名称</td><td><input type="text" name="name"></td></tr>
+                        <tr><td>&nbsp;</td><td><input type="submit" value=提交></td></tr>
+                    </tbody>
+                </table>
+            </form>
+    </div>
+</div>
+</div>
+<div id="footer" class="cl"></div>
+<script type="text/javascript" src="/Static/common/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/Static/dantescms/js/dantes.ui.1.0.js"></script>
+<?php if(ACTION_NAME == 'subforum'): ?><script type="text/javascript" src="/Static/common/js/jQuery.Hz2Py-min.js"></script>
+<script type="text/javascript">
+$(function (){
+    $("#name").mouseover(function (){
+        $("#url").val($(this).toPinyin());
+    });
+});
+</script><?php endif; ?>
+</body>
+</html>
+<script>
+    $(document).ready(function(){
+        $(".table-list tr").click(function(){
+            $(this).parent().find(".subcate").remove();
+            $(this).addClass('on').siblings(this).removeClass('on');
+            //$(this).slideToggle(200);//.siblings('.show-subcate').slideUp(200);
+            var id=$(this).attr('id');
+            $.ajax({
+                url:"<?php echo U('Forum/ajax_category');?>",
+                data:'pid='+id,
+                success:function(response,xhr){
+                $("#"+id).after(response);
+            }
+            })
+        })
+    })
+</script>

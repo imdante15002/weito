@@ -1,0 +1,11 @@
+<volist name="cate" id="vo">
+<tr class="subcate">
+	<td width="15"><input type="checkbox" name="tid[]" value="<!--{$vo.id}-->"></td>
+	<td><!--{$vo.name}--></td>
+	<td width="15"><input type="text" class="c2w hm" name="<!--{$vo.id}-->" value="<!--{$vo.sort}-->"></td>
+	<td width="200">
+	     <a href="<!--{:U('Forum/ed_category',array(id=>$vo['id']))}-->" title="编辑"><i class="ui i-ed"></i></a>
+	     <a href="<!--{:U('Forum/del_category',array(id=>$vo['id']))}-->" title="删除"><i class="ui i-del"></i></a>
+	</td>
+</tr>
+</volist>
