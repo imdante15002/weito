@@ -12,15 +12,17 @@ class MemberController extends CommonController{
         $this->assign('page',$show);// 赋值分页输出
         $this->display();
     }
-    public function add_member(){
-        $this->admin=M('auth_group')->select();
-        $this->user=M('auth_user')->select();
-        $this->display();
-    }
-     public function user(){
+    /**
+     * 用户组列表中心
+     * @return [type] [description]
+     */
+    public function user(){
         $this->role=M('auth_user')->select();
         $this->display();
     }
+    /**
+     * 添加用户组执行程序
+     */
     public function add_user(){
         $data=I('post.');
         if (M('auth_user')->add($data)) {
@@ -29,10 +31,17 @@ class MemberController extends CommonController{
             $tthis->error('添加失败，请重试或是联系技术人员！');
         }   
     }
+    /**
+     * 管理组列表
+     * @return [type] [description]
+     */
     public function role(){
         $this->role=M('auth_group')->select();
         $this->display();
     }
+    /**
+     * 添加管理组执行程序
+     */
     public function add_role(){
         $data=I('post.');
         if (M('auth_group')->add($data)) {
@@ -41,8 +50,49 @@ class MemberController extends CommonController{
             $tthis->error('添加失败，请重试或是联系技术人员！');
         }   
     }
-    public function auth(){
+    /**
+     * 管理组权限编辑
+     * @return [type] [description]
+     */
+    public function ed_role(){
+        $id->id=I('id');
+        $ed=M('auth_group')->where($id)->find();
+        import('Common.Common.Category');
+        $merge = new \Category();
+        $class=M('auth_rule')->order('id asc')->select();
+        $list=$merge::unlimitedForLevel($class,'|-- ');
+        $rules=explode(',',$ed['rules']);
+        foreach ($list as $k => $v) {
+            $status=array_search($v['id'],$rules);
+            $status?$list[$k]['s']=1:$list[$k]['s']=0;
+        }
+        //print_r($list);
+        $this->assign('ed',$ed);
+        $this->assign('list',$list);
         $this->display();
+    }
+    public function ed_role_exe(){
+        $id->id=I('id');
+        $r['rules']=implode(',',I('rules'));
+        $save=M('auth_group')->where($id)->save($r);
+        if ($save) {
+            $this->success('保存成功!');
+        } else {
+            $this->error('保存失败，请重试或是联系技术人员！');
+        }   
+    }
+    public function add_user_to_role(){
+        $data=I('get.');
+        $uid->uid=I('uid');
+        $a=M('member')->where($uid)->getField('uid');
+        if (!$a) {
+            $this->error('用户不存在');
+        }
+        if (M('auth_group_access')->add($data)) {
+             $this->success('添加成功!',U('Member/role'));
+        } else {
+            $tthis->error('添加失败，请重试或是联系技术人员！');
+        }   
     }
     public function repassword(){
         $this->display();

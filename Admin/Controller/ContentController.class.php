@@ -251,7 +251,7 @@ class ContentController extends CommonController{
      * 文章发布动作执行
      */
     public function add_article_exe(){
-        if (!I('catid')) {
+        if (!I('cid')) {
             $this->error('栏目没有选择哦！');
         }else if (!I('title')){
             $this->error('标题不能空！');
@@ -269,7 +269,7 @@ class ContentController extends CommonController{
             $thumb='';
         }
         $arr=I('post.');
-        $arr['litpic']=$thumb;
+        $arr['lipic']=$thumb;
         $arr['dateline']=time();
         $arr['pubip']=get_client_ip();
         $arr['uid']=$_SESSION['uid'];

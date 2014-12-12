@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>我要贴图 - <!--{$G.sitename}--></title>
+	<meta name="keywords" content="<!--{$nav.keywords}-->" />
+    <meta name="description" content="<!--{$nav.description}-->"/>
+    <meta name="powered" content="powered by weitcms">
+    <meta name="contact" content="qq:763093576 mobile:17722515002">
+	<include file="Member/Template/default/common/css.html"/>
+	<css file="__mcss__/member.min.css"/>
+</head>
+<body>
+	<include file="Home/Template/default/common/header.html"/>
+	<div class="tf"></div>
+	<div id="container">
+		<div class="tw"></div>
+		<div class="wp cl bff bmw" style="width:800px; height:270px;">
+		<div class="m-col">
+			<div class="p-col">
+				<div class="member-header" style="padding-bottom:5px;"><h2 class="z" style="font-size:18px;">成功发布</h2><a href="/topic/<!--{$v.tid}-->.html" class="mlm xs4" style="color:#f80"><!--{$v.title}--></a></div>
+				<div class="p-col hm" style="padding-top:50px;">
+					<p><a href="/member/post" class="btn">继续发布</a><a href="/topic/<!--{$v.id}-->.html" class="btn mlm">浏览帖子</a></p>
+				</div>
+			</div>
+			<style>
+				.cc-uu { overflow: hidden;}
+				.cc-uu li { float: left; padding:0 8px; font-size:14px;}
+				.cc-uu li a:hover { color:#f80;text-decoration: underline;}
+			</style>
+			<div class="p-col">
+				<ul class="cc-uu">
+					<volist name="channel" id="vo">
+					<li><a href="<!--{$G.siteurl}-->/<!--{$vo.url}-->.html" <if condition="ACTION_NAME eq $vo['url']">class="active"</if>><!--{$vo.name}--></a></li>
+				</volist>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<include file="Home/Template/default/common/footer.html"/>
+</body>
+</html>

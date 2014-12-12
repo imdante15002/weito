@@ -15,9 +15,8 @@
                         <td><!--{$vo.id}--></td>
                         <td><!--{$vo.title}--></td>
                         <td>
-                            <a href="" title="添加管理人员"><i class="ui i-add"></i></a>
-                            <a href="" title="编辑"><i class="ui i-ed"></i></a>
-                            <a href="" title="删除"><i class="ui i-del"></i></a>
+                            <a href="<!--{:U('Member/ed_user')}-->"title="编辑"><i class="ui">S</i></a>
+                            <a href="javascript:;" data-id="del" class="modal" title="删除"><i class="ui">V</i></a>
                         </td>
                     </tr>
                     </volist>

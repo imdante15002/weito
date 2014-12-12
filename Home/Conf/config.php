@@ -24,20 +24,20 @@ return array(
 	//'URL_PATHINFO_DEPR'     =>  '/',    // PATHINFO模式下，各参数之间的分割符号
 	'URL_ROUTER_ON'         => true,
   'URL_ROUTE_RULES'       =>array(
-       'video/:id'        => 'Video/index',
-       'topc/:name'         => 'Topic/index',
-       'juqing'             => 'Nav/juqing',
-       'gaoxiao'            => 'Nav/gaoxiao',
-       'pvp'                => 'Nav/pvp',
-       'pve'                => 'Nav/pve',
-       'gonghui'            => 'Nav/gonghui',
-       'zahui'              => 'Nav/zahui',
-       'cg'                 => 'Nav/cg',
-       'mv'                 => 'Nav/mv',
+      'video/:id\d'         => 'Video/index',
+      'topic/:id\d'         => 'Topic/index',
+      'jingcaijietu'      =>'List/jingcaijietu',
+      'tuwengushi'        =>'List/tuwengushi',
+      'egaotupian'        =>'List/egaotupian',
+      'youxibizhi'        =>'List/youxibizhi',
+      'wanjiazuopin'      =>'List/wanjiazuopin',
+      'wanjiacos'         =>'List/wanjiacos',
+      'sigemanhua'        =>'List/sigemanhua',
+      'wanjiashouhui'     =>'List/wanjiashouhui',
        //用户操作模块
-       'login'              => 'Member/Public/login',
-       'register'           => 'Member/Public/register',
-       'forumdisplay/:id'   => 'Forum/forumdisplay',
-       'thread/:tid'        => 'Forum/thread'
+      'login'             => 'Member/Public/login',
+      'register'          => 'Member/Public/register',
+      'forumdisplay/:id\d'  => 'Forum/forumdisplay',
+      'thread/:tid'       => 'Forum/thread'
      )
 );

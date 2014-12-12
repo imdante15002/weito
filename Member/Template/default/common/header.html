@@ -1,40 +1,44 @@
 <header class="header">
-	<div class="wp cl">
-		<h2 class="logo">
-			<a href="<!--{$G.siteurl}-->"><img  alt="<!--{$sitename}-->" src="__homeimg__/logo.png" width="227" height="45"></a>
-		</h2>
-		<nav class="nav z">
-			<ul>
-				<li><a href="<!--{$G.siteurl}-->"><i class="i-icon">A</i></a></li>
-				<volist name="channel" id="vo">
-					<li <if condition="$vo['url'] eq ACTION_NAME"> class="active"</if>><a href="<!--{$G.siteurl}-->/<!--{$vo.url}-->.html"><!--{$vo.name}--></a></li>
-				</volist>
-			</ul>
-		</nav>
-		<div class="search">
-			<form action="search" method="get">
-				<input type="text" name="keyword" placeholder="搜一下吧" class="keyword"><input type="submit" class="search-btn" value="搜索">
-			</form>
+	<div class="topbar">
+		<div class="wp cl">
+			<h2 class="logo">
+				<a href="<!--{$G.siteurl}-->">微图网</a><span class="xs2">weito.wang 做最独特的游戏图片社区</span>
+			</h2>
+			<div class="member-menu z"><i class="i-icon">r</i></div>
+			<div class="search z">
+				<form action="<!--{$G.siteurl}-->/search" method="get">
+					<input type="text" name="keyword" placeholder="搜一下吧" class="keyword"><input type="submit" class="search-btn" value="搜索">
+				</form>
+			</div>
+			<div class="user-col relative y">
+				<include file="Home/Template/default/common/user_block.html"/>
+			</div>
 		</div>
 	</div>
 </header>
-<div class="tw"></div>
-<section class="wp user-info-banner">
-	<ul class="slidebox">
-		<li><a href="javascript:void(0)"><img src="__mimg__/user_banner_0.jpg" /></a></li>
-		<li><a href="javascript:void(0)"><img src="__mimg__/user_banner_1.jpg" /></a></li>
-		<li><a href="javascript:void(0)"><img src="__mimg__/user_banner_2.jpg" /></a></li>
-		<li><a href="javascript:void(0)"><img src="__mimg__/user_banner_3.jpg" /></a></li>
-	</ul>
-	<div class="member-index-avtimg cl">
-		<a href="/member/re_avtimg" class="z"><img src="<!--{$user.avtimg|default='/Static/common/images/user.png'}-->" alt="<!--{$user.username}-->" title="修改头像" width="160" height="160"></a>
-		<div class="member-user-info">
-			<div class="user-username"><i class="i-icon">p</i><!--{$user.username}--><small class="xs2 mlm">欢迎回来！</small></div>
-			<div class="user-score">
-				<div class="z mrm"><i class="i-icon">B</i>用户组：<!--{$user.username}--></div>
-				<div class="z mrm"><i class="i-icon">g</i>经验<!--{$user.score}--></div>
-				<div class="z mrm"><i class="i-icon">c</i>微币：<!--{$user.wb}--></div>
-			</div>
+<section class="user-info-banner">
+	<div class="wp cl relative">
+		<div class="member-avtimg z cl">
+			<img src="<!--{$user.avtimg|default='/Static/common/images/user.jpg'}-->" alt="<!--{$user.username}-->"  width="90" height="90">
 		</div>
+		<div class="user-username">
+			<span class="username"><!--{$user.username}--></span>
+			<span class="user-button"><i class="i-icon">B</i>  <!--{$user.group}--></span>
+			<p class="xs2 normal"><!--{$user.signature}--></p>
+		</div>
+		<div class="user-score">
+			<div class="z mrm"><i class="i-icon">g</i>经验<!--{$user.score}--></div>
+			<div class="z mrm"><i class="i-icon">c</i>微币：<!--{$user.wb}--></div>
+		</div>
+		<nav class="member-nav ov">
+			<ul class="y">
+				<li><a href="/member/infocenter.html" <if condition="(CONTROLLER_NAME eq 'Index') and (ACTION_NAME eq 'index')">class="active"</if>><i class="i-icon">A</i>我的首页</a></li>
+				<li><a href="/member/thread.html" <if condition="ACTION_NAME eq 'thread'"> class="active"</if>><i class="i-icon">g</i>我的帖子</a></li>
+				<li><a href="/member/concern.html" <if condition="ACTION_NAME eq 'concern'">class="active"</if>><i class="i-icon">q</i>我的关注</a></li>
+				<li><a href="/member/reply.html" <if condition="ACTION_NAME eq 'reply'">class="active"</if>><i class="i-icon">f</i>我的回复</a></li>
+				<li><a href="/member/config.html" <if condition="ACTION_NAME eq 'config'">class="active"</if>><i class="i-icon">e</i>个人设置</a></li>
+				<li class="post-btn"><a href="/member/post.html" <if condition="CONTROLLER_NAME eq 'Post'">class="active"</if>><i class="i-icon">S</i>我要贴图</a></li>
+			</ul>
+		</nav>
 	</div>
 </section>

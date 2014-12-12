@@ -23,8 +23,6 @@ class CommonController extends Controller {
          * 设置为$Channel(栏目表)/$Contents(内容数据局表);
          */
         $Channel=M('channel');
-        $Contents=M('contents');
-
     	/**
          * 查询栏目、并且设置缓存，设置缓存时间为1天
          */
@@ -49,18 +47,12 @@ class CommonController extends Controller {
          */
         $now_uid=$_SESSION['uid'];
         $this->ukey=$now_uid;//输出查询获取的session中uid的值;
-        if ($now_uid<>0) {
+        if ($now_uid>0) {
             $uwhere->uid=$now_uid;
-            $auth_user=M('member')->where($uwhere)->find();
-            if ($auth_user['auth_group_id']>0) {
-                $gwhe->id=$auth_user['auth_group_id'];
-                $auth_user['group']=M('auth_group')->where($gwhe)->getField('title');
-                $this->utype="管理组";
-            }else{
-                $gwhe->id=$auth_user['auth_user_id'];
-                $auth_user['group']=M('auth_user')->where($gwhe)->getField('title');
-                $this->utype="用户组";
-            }
+            $auth_user=M('Member')->where($uwhere)->find();
+            $group_id=M('auth_group_access')->where($uwhere)->getField('group_id');
+            $group_id_where->id=$group_id;
+            $auth_user['group']=M('auth_group')->where($group_id_where)->getField('title');
             $this->assign('user',$auth_user);
         }
     }

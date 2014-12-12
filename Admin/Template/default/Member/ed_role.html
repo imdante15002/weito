@@ -1,0 +1,41 @@
+<include file="Admin/Template/default/common/header.html"/>
+<div id="main" class="cl">
+   <div class="colbox">
+         <div class="col-header"><a href="/index.php/Admin" class="col-cls" title="关闭"></a><i class="ui i">B</i><!--{$ed.title}-->  管理组信息编辑</div>
+        <div class="p-col">
+        	<ul class="form-list">
+        	<form action="<!--{:U('Member/ed_role_exe')}-->" method="post">
+        		<input type="hidden" name="id" value="<!--{$ed.id}-->">
+        		<li>
+        			<label for="">名称</label><input type="text" name="title" value="<!--{$ed.title}-->">
+        			<label for="" style="color:#<!--{$ed.color}-->">显示颜色</label><input type="text" name="color" value="<!--{$ed.color}-->">
+        		</li>
+        		<li><b>编辑权限</b></li>
+        		 <volist name="list" id="vo">
+        		 	<if condition="$vo.level eq 1">
+	                <div class="auth_section">
+	                    <label><input type="checkbox" name="rules[]" value="<!--{$vo.id}-->" id="checkbox_all" <if condition="$vo['s']">checked='checked'</if>><!--{$vo.title}--></label>
+	                </div>
+	                <else/>
+	                	<li class="auth_title"><label><input type="checkbox" name="rules[]" value="<!--{$vo.id}-->"  data-level="<!--{$vo.level}-->" id="level_<!--{$vo.level}-->" <if condition="$vo['s']">checked='checked'</if>><!--{$vo.title}--></label></li class="auth_title">
+	                </if>
+	                </volist>
+	              <div class="tw"></div>
+				 <div class="auth_section hm"><input type="submit" value="保存修改"></div>
+			</form>
+        	</ul>
+        </div>
+    </div>
+</div>
+<include file="Admin/Template/default/common/footer.html"/>
+<script type="text/javascript">
+	$(function(){
+		$("#checkbox_all").click(function(){   
+	        if(this.checked){   
+	            $("input[name='rules[]']").each(function(){this.checked=true;});  
+	        }else{   
+	            $("input[name='rules[]']").each(function(){this.checked=false;});   
+	        }   
+   		});
+	})
+</script>

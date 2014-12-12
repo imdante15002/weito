@@ -18,23 +18,9 @@
 		<ul class="list relative" id="pull">
 			<volist name="list" id="vo">
 				<li class="item">
-					<a href="/topic/<!--{$vo.id}-->.html">
-					<img alit="<!--{$vo.title}-->"  class="thumb" data-url="/<!--{$vo.lipic}-->" src="__homeimg__/loading.gif" width="193"></a>
-					<h3>[<!--{$vo.name}-->]  <a href="/topic/<!--{$vo.id}-->.html"><!--{$vo.title}--></a></h3>
-				</li>
-			</volist>
-			<volist name="list" id="vo">
-				<li class="item">
-					<a href="/topic/<!--{$vo.id}-->.html">
-					<img alit="<!--{$vo.title}-->"  class="thumb" data-url="/<!--{$vo.lipic}-->" src="__homeimg__/loading.gif" width="193"></a>
-					<h3><a href="/topic/<!--{$vo.id}-->.html"><!--{$vo.title}--></a></h3>
-				</li>
-			</volist>
-			<volist name="list" id="vo">
-				<li class="item">
-					<a href="/topic/<!--{$vo.id}-->.html">
-					<img alit="<!--{$vo.title}-->"  class="thumb" data-url="/<!--{$vo.lipic}-->" src="__homeimg__/loading.gif" width="193"></a>
-					<h3><a href="/topic/<!--{$vo.id}-->.html"><!--{$vo.title}--></a></h3>
+					<a href="<!--{$G.siteurl}-->/topic/<!--{$vo.id}-->.html">
+					<img alit="<!--{$vo.title}-->"  class="thumb" data-original="<!--{$G.siteurl}-->/<!--{$vo.lipic}-->" src="__homeimg__/loading.gif" width="193"></a>
+					<h3>[<a href="<!--{$G.siteurl}-->/<!--{$vo.url}-->.html"><!--{$vo.name}--></a>]  <a href="/topic/<!--{$vo.id}-->.html"><!--{$vo.title}--></a></h3>
 				</li>
 			</volist>
 		</ul>

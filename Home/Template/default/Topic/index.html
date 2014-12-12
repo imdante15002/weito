@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title><!--{$views.title}--> - <!--{$G.shortname}--></title>
+	<meta name="keywords" content="<!--{$nav.keywords}-->" />
+    <meta name="description" content="<!--{$nav.description}-->"/>
+    <meta name="powered" content="powered by weitcms">
+    <meta name="contact" content="qq:763093576 mobile:17722515002">
+	<include file="Home/Template/default/common/css.html"/>
+	<css file="__homecss__/slides.css"/>
+</head>
+<body>
+	<include file="Home/Template/default/common/header.html"/>
+	<div class="f"></div>
+	<div id="container">
+		<div class="bf45">
+			<section class="position wp cl">
+				<a href="<!--{$G.siteurl}-->"><i class="i-icon">A</i><!--{$G.shortname}--></a><span>></span><a href="<!--{$G.siteurl}-->/<!--{$views.url}-->.html"><!--{$views.name}--></a>
+			</section>
+		</div>
+		<section class="wp cl ov">
+			<div class="article z">
+				<header class="aricle-title"><h1><!--{$views.title}--></h1></header>
+				<section class="article-info"></section>
+				<article class="article-article"><!--{$views.body|htmlspecialchars_decode|stripslashes}--></article>
+				<footer class="article-footer"></footer>
+			</div>
+			<aside class="aside y">
+				shenaefegaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+			</aside>
+		</section>
+		<div class="tw"></div>
+		<section class="wp cl"><div class="page"><!--{$page}--></div></section>
+	</div>
+	<include file="Home/Template/default/common/footer.html"/>
+</body>
+</html>

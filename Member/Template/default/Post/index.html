@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>分享视频 - <!--{$G.sitename}--></title>
+	<title>我要贴图 - <!--{$G.sitename}--></title>
 	<meta name="keywords" content="<!--{$nav.keywords}-->" />
     <meta name="description" content="<!--{$nav.description}-->"/>
     <meta name="powered" content="powered by weitcms">
@@ -15,27 +15,22 @@
 	<include file="Member/Template/default/common/header.html"/>
 	<div class="tf"></div>
 	<div id="container">
-		<section class="wp cl">
+		<section class="wp cl bff">
 			<include file="Member/Template/default/common/user_block.html"/>
 			<div class="main-member">
-				<div class="header-member"><i class="i-icon z mrm">S</i> 发布新视频</div>
+				<div class="header-member"><i class="i-icon z mrm">S</i> 分享图片</div>
 				<div class="p-col">
-					<form name="post" action="/member/post/post_do" method="post" enctype="multipart/form-data" method="post">
+					<form name="post" action="/member/post/post_do" method="post">
 					<div class="form-item">
-						<label>标题</label>
 						<select name="cid">
 							<volist name="video_cate" id="vo">
 								<option value="<!--{$vo.id}-->"><!--{$vo.name}--></option>
 							</volist>
 						</select> - 
-						<input type="text" name="title" class="w400">
+						<input type="text" name="title" class="w400" placeholder="这里填写标题">
 					</div>
-					<div class="form-item"><label>视频地址</label><input type="text" name="src" class="w400"><span class="fx">优酷土豆下方分享的flash地址，一般为.swf、.flv后缀</span></div>
-					<div class="form-item"><label>视频缩略图</label><input type="file" name="litpic"> <span class="fx">由于不能直接上传上视频，请手动添加视频所缩略图</span></div>
-					<div class="form-item"><label>视频介绍</label> <span class="fx">添加您对视频的简单介绍和描述，可以是图文混合、绘声绘色的描述，效果更佳哦！</span></div>
-					<div class="form-item" style="padding-left:110px;"><textarea name="body" id="Content"></textarea></div>
-					<div class="form-item"><label>标签</label><input type="text" name="keywords" class="w400"> <span class="fx">为了更多的人看您发的视频，请填写关键词，以英文','隔开</span></div>
-					<div class="form-item"><label>&nbsp;</label><input type="submit" value="确认发布" id="submit"></div>
+					<div class="form-item"><textarea name="body" id="Content"></textarea></div>
+					<div class="form-item"><input type="submit" value="确认发布" id="submit"></div>
 				</form>
 				<div class="tw"></div>
 			</div>
@@ -43,16 +38,16 @@
 		</section>
 	</div>
 	<div class="tw"></div>
-	<include file="Member/Template/default/common/footer.html"/>
+	<include file="Home/Template/default/common/footer.html"/>
 	<js file="/Static/ueditor/ueditor.config.js"/>
     <js file="/Static/ueditor/ueditor.all.min.js"/>
     <script type="text/javascript">
     window.UEDITOR_HOME_URL='__ueditor__/';
     window.onload=function(){
-        window.UEDITOR_CONFIG.initialFrameWidth=700; 
-        window.UEDITOR_CONFIG.initialFrameHeight=240;
+        window.UEDITOR_CONFIG.initialFrameWidth=825; 
+        window.UEDITOR_CONFIG.initialFrameHeight=320;
         UE.getEditor('Content',{
-        	toolbars:[['bold','forecolor','fontsize','fontfamily','insertorderedlist','justifyleft','justifycenter','justifyright','ling','unlink','simpleupload','insertimage','emotion','inserttable','mergecells','removeformat']]
+        	toolbars:[['bold','forecolor','fontsize','fontfamily','justifyleft','justifycenter','justifyright','link','unlink','simpleupload','insertimage','emotion']]
         });
     }
     </script>

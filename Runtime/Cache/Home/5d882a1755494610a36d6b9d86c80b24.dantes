@@ -1,0 +1,121 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title><?php echo ($views["title"]); ?> - <?php echo ($G["shortname"]); ?></title>
+	<meta name="keywords" content="<?php echo ($nav["keywords"]); ?>" />
+    <meta name="description" content="<?php echo ($nav["description"]); ?>"/>
+    <meta name="powered" content="powered by weitcms">
+    <meta name="contact" content="qq:763093576 mobile:17722515002">
+	<link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="/Static/common/css/common.min.css" />
+<link rel="stylesheet" type="text/css" href="/Static/home/css/weithree.min.css" />
+<!--[if lt ie 9]> 
+<script src="/Static/common/js/html5.js"></script> 
+<![endif]--> 
+	<link rel="stylesheet" type="text/css" href="/Static/home/css/slides.css" />
+</head>
+<body>
+	<header class="header">
+	<div class="topbar">
+		<div class="wp cl">
+			<h2 class="logo">
+				<a href="<?php echo ($G["siteurl"]); ?>">微图网</a><span class="xs2">weito.wang 做最独特的游戏图片社区</span>
+			</h2>
+			<div class="search z">
+				<form action="search" method="get">
+					<input type="text" name="keyword" placeholder="搜一下吧" class="keyword"><input type="submit" class="search-btn" value="搜索">
+				</form>
+			</div>
+			<div class="user-col relative y">
+				<?php if($ukey == 0 ): ?><div class="user-off-line">
+	<img src="/Static/common/images/user.jpg" width="29" height="29" class="vm" >
+	<button value="登录" class="modal login-btn" data-modal="login"><i class="i-icon">B</i> 登录</button>
+	<a href="<?php echo ($G["siteurl"]); ?>/register.html" class="register-btn">注册</a>
+</div>
+<?php else: ?>
+<div class="user-on-line cl">
+	<a href="/member/post" class="user-a-btn"><i class="i-icon z">S</i>我要贴图</a>
+	<a href="/member/infocenter" class="user-name dropdown" data-id="user_menu">
+		<img src="<?php echo ((isset($user["avtimg"]) && ($user["avtimg"] !== ""))?($user["avtimg"]):'/Static/common/images/user.jpg'); ?>" width="30" height="30" title="进入个人用户中心" class="vm">
+		<?php echo ($user["username"]); ?>
+		<span class="caret"></span>
+	</a>
+	<ul class="user-menu none absolute" id="user_menu">
+		<li><a href="/member/myinfo">个人信息</a></li>
+		<li><a href="/member/myinfo/revision">头像修改</a></li>
+		<li><a href="/member/myinfo/video">我的贴图</a></li>
+		<li><a href="/member/myinfo/reply">我的回复</a></li>
+		<li><a href="/member/logout">安全退出</a></li>
+	</ul>
+</div><?php endif; ?>
+			</div>
+		</div>
+	</div>
+	<nav class="nav z">
+		<ul class="wp hm">
+			<li><a href="<?php echo ($G["siteurl"]); ?>">微图首页</a></li>
+			<?php if(is_array($channel)): $i = 0; $__LIST__ = $channel;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><li <?php if($vo['url'] == ACTION_NAME): ?>class="active"<?php endif; ?>><a href="<?php echo ($G["siteurl"]); ?>/<?php echo ($vo["url"]); ?>.html"><?php echo ($vo["name"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
+		</ul>
+	</nav>
+</header>
+	<div class="f"></div>
+	<div id="container">
+		<div class="bf45">
+			<section class="position wp cl">
+				<a href="<?php echo ($G["siteurl"]); ?>"><i class="i-icon">A</i><?php echo ($G["shortname"]); ?></a><span>></span><a href="<?php echo ($G["siteurl"]); ?>/<?php echo ($views["url"]); ?>.html"><?php echo ($views["name"]); ?></a>
+			</section>
+		</div>
+		<section class="wp cl ov">
+			<div class="article z">
+				<header class="aricle-title"><h1><?php echo ($views["title"]); ?></h1></header>
+				<section class="article-info"></section>
+				<article class="article-article"><?php echo (stripslashes(htmlspecialchars_decode($views["body"]))); ?></article>
+				<footer class="article-footer"></footer>
+			</div>
+			<aside class="aside y">
+				shenaefegaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+			</aside>
+		</section>
+		<div class="tw"></div>
+		<section class="wp cl"><div class="page"><?php echo ($page); ?></div></section>
+	</div>
+	<footer class="footer">
+	<div class="wp cl">
+		<div class="static hm xs2">
+			<a href="<?php echo ($G["siteurl"]); ?>/about.html" class="first">关于微剑三</a>
+			<a href="<?php echo ($G["siteurl"]); ?>/flow.html">免责申明</a>
+			<a href="<?php echo ($G["siteurl"]); ?>/adv.html">广告服务</a>
+			<a href="<?php echo ($G["siteurl"]); ?>/flink.html">友情链接</a>
+			<a href="<?php echo ($G["siteurl"]); ?>/sitemap.html">网站导航</a>
+			<a href="<?php echo ($G["siteurl"]); ?>/join.html">加入我们</a>
+		</div>
+		<div class="copy hm">	
+			<p>免责声明：本站所有内容均来自正规视频站点所提供的公开引用资源</p>
+			<p>&copy;COPYRIGHT 2014 <a href="<?php echo ($G["siteurl"]); ?>">weij3.com</a> ALL RIGHTS RESERVED.<a href="http://www.miibeian.gov.cn/"><?php echo ($G["icp"]); ?></a></p>
+		</div>
+	</div>
+</footer>
+<?php if($ukey == 0): ?><div class="dialog" id="login">
+	 <div class="dialog-header">登录之后更精彩<a href="javascript:void(0)" class="cls y" data-id="login"></a></div>
+	<div class="p-col">
+		<form id="data-login" method="post" action="/member/public/login">
+			<div class="form-box"><label>邮箱</label><input type="text" name="email" class="email text-box"></div>
+			<div class="form-box"><label>密码</label><input type="password" name="password" class="password text-box"></div>
+			<div class="form-box"><input type="submit" class="sub-btn" value="登录"><a href="<?php echo ($G["siteurl"]); ?>/register.html" class="register-btn mlm">还没有账号？注册</a></div>
+		</form>
+	</div>
+</div><?php endif; ?>
+<div class="floating-nav fixed">
+	<li class="backTop"><a href="javascript:void(0)"><i class="i-icon">a</i></a></li>
+	<li><a href="<?php echo ($G["siteurl"]); ?>/post"><i class="i-icon">S</i></a></li>
+	<li><a href="javascript:void(0)"><i class="i-icon">f</i></a></li>
+</div>
+<script type="text/javascript" src="/Static/common/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/Static/common/js/jquery.sloading.min.js"></script>
+<script type="text/javascript">$(function() {$(".thumb").scrollLoading();});</script>
+<script type="text/javascript" src="/Static/home/js/weithree.min.js"></script>
+</body>
+</html>

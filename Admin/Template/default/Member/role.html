@@ -15,9 +15,8 @@
                         <td><!--{$vo.id}--></td>
                         <td><!--{$vo.title}--></td>
                         <td width="120">
-                            <a href="" title="添加管理人员"><i class="ui i-add"></i></a>
-                            <a href="" title="编辑"><i class="ui i-ed"></i></a>
-                            <a href="" title="删除"><i class="ui i-del"></i></a>
+                            <a href="<!--{:U('Member/ed_role',array(id=>$vo['id']))}-->" title="编辑"><i class="ui">S</i></a>
+                            <a href="javascript:;" class="modal" data-modal="del" title="删除"><i class="ui">V</i></a>
                         </td>
                     </tr>
                     </volist>
@@ -51,13 +50,13 @@
 <div class="dialog" id="add_user">
     <div class="dialog-header">添加管理人员<a href="javascript:void(0)" class="cls y" data-id="add_user"></a></div>
     <div class="p-col">
-            <form action="<!--{:U('Forum/add_category')}-->" method="post">
+            <form action="<!--{:U('Member/add_user_to_role')}-->" method="get">
                 <table class="form-table">
                     <tbody>
                         <tr>
                             <td align="right">所属管理组</td>
                             <td>
-                                <select name="gid" id="forum">
+                                <select name="group_id" id="forum">
                                     <option value="">请选择</option>
                                     <volist name="role" id="vo">
                                         <option value="<!--{$vo.id}-->"><!--{$vo.title}--></option>

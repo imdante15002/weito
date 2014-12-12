@@ -3,7 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends CommonController {
     public function index(){
-    	$m          = D('VideoView');
+    	$m          = D('TopicView');
     	$count      = $m->count();// 查询满足要求的总记录数
 		$list       = $m->order('id desc')->limit(45)->select();
 		$this       ->assign('list',$list);

@@ -152,6 +152,7 @@ div.edui-box {
 .edui-default .edui-editor-toolbarbox {
     position: relative;
     zoom: 1;
+    background-color: #f2f2f2
 }
 
 .edui-default .edui-editor-toolbarboxouter {

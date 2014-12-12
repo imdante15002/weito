@@ -32,6 +32,19 @@
 	<li><a href="javascript:void(0)"><i class="i-icon">f</i></a></li>
 </div>
 <js file="__cmmjs__/jquery-1.11.1.min.js"/>
-<js file="__cmmjs__/jquery.sloading.min.js"/>
-<script type="text/javascript">$(function() {$(".thumb").scrollLoading();});</script>
+<js file="__cmmjs__/jquery.lazyload.js"/>
+<script type="text/javascript">
+	$(function() {
+    $("img.thumb").lazyload({
+        event : "sporty",
+        effect : "fadeIn"
+	    });
+	});
+
+	$(window).bind("load", function() {
+	    var timeout = setTimeout(function() {
+	        $("img.thumb").trigger("sporty")
+	    },1000);
+	});
+</script>
 <js file="__homejs__/weithree.min.js"/>

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title><!--{$nav.name}-->视频 - <!--{$G.sitename}--></title>
+	<title><!--{$nav.name}--> - <!--{$G.sitename}--></title>
 	<meta name="keywords" content="<!--{$nav.keywords}-->" />
     <meta name="description" content="<!--{$nav.description}-->"/>
     <meta name="powered" content="powered by weitcms">
@@ -13,33 +13,40 @@
 </head>
 <body>
 	<include file="Home/Template/default/common/header.html"/>
+	<div class="f"></div>
 	<div id="container">
 		<div class="bf45">
 			<section class="position wp cl">
-				<a href="<!--{$G.siteurl}-->"><i class="i-icon">A</i>  <!--{$G.shortname}--></a><span>></span><a href="<!--{$G.siteurl}-->/<!--{$nav.url}-->.html"><!--{$nav.name}-->视频</a>
+				<a href="<!--{$G.siteurl}-->"><i class="i-icon">A</i><!--{$G.shortname}--></a><span>></span><a href="<!--{$G.siteurl}-->/<!--{$nav.url}-->.html"><!--{$nav.name}--></a>
 			</section>
-			<header class="wp v-title">
-				<h1 class="z"><!--{$nav.name}-->视频<span class="xs2 mlm">共有<em class="cf34"><!--{$total}--></em>个视频</span><span  class="xs2"><em class="cf34"><!--{$totalviews|default="0"}--></em>次播放</span></h1>
-			</header>
 		</div>
-		<div class="t"></div>
 		<section class="wp cl ov">
-			<ul  class="video-list">
+			<ul class="list relative" id="pull">
 			<volist name="list" id="vo">
-				<li>
-					<a href="<!--{$G.siteurl}-->/video/<!--{$vo.id}-->.html" class="thumb"><img alt="<!--{$vo.title}-->" src="/<!--{$vo.lipic}-->" width="200" height="112" title="<!--{$vo.title}-->"></a>
-					<h3 class="title"><a href="<!--{$G.siteurl}-->/video/<!--{$vo.id}-->.html" title="<!--{$vo.title}-->"><!--{$vo.title}--></a></h3>
-					<div class="xs2 hm tg">
-						<span><i class="i-icon">z</i><!--{$vo.views}--></span>
-						<span><i class="i-icon">Q</i><!--{$vo.dateline|date="m-d",###}--></span>
-					</div>
-				</li>	
+				<li class="item">
+					<a href="/topic/<!--{$vo.id}-->.html">
+					<img alit="<!--{$vo.title}-->"  class="thumb" data-url="/<!--{$vo.lipic}-->" src="__homeimg__/loading.gif" width="193"></a>
+					<h3><a href="/topic/<!--{$vo.id}-->.html"><!--{$vo.title}--></a></h3>
+				</li>
 			</volist>
-			</ul>
+		</ul>
 		</section>
 		<div class="tw"></div>
 		<section class="wp cl"><div class="page"><!--{$page}--></div></section>
 	</div>
 	<include file="Home/Template/default/common/footer.html"/>
+	<js file="__cmmjs__/jquery.masonry.js"/>
+	<script>
+		$(function(){
+		    var $container = $('#pull');
+		    $container.imagesLoaded( function(){
+		        $container.masonry({
+		            itemSelector : '.item',
+		            gutterWidth : 20,
+		            isAnimated: true,
+		        });
+		    });
+		});
+	</script>
 </body>
 </html>
